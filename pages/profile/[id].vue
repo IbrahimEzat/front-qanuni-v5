@@ -64,7 +64,10 @@
             </v-col>
             <v-col md="9" cols="12" class="ps-5">
               <div class="border pa-2 my-2">
-                <user-bades :userId="$route.params.id"/>
+                <div class="d-flex">
+                  <span class="ms-2">الاوسمة التي حصل عليها: </span>
+                  <user-bades :userId="$route.params.id"/>
+                </div>
               </div>
               <div class="rounded-xl mb-3" style="background-color: #e1fbde">
                 <p class="text-center text-h5 py-2 font-weight-bold">

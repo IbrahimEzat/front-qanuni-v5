@@ -182,7 +182,7 @@
                   </template>
                   <v-list class="mt-1 bg-lime-lighten-5 rounded-lg" style="text-align: center">
                     <v-list-item-title class="px-10 py-4 pontiner">
-                      <nuxt-link to="">
+                      <nuxt-link to="/AboutSite">
                         <span class="align-self-center font-weight-bold">
                           معلومات حول الموقع
                         </span>
@@ -210,7 +210,7 @@
                     </v-list-item-title>
                     <v-divider class="border-opacity-50"></v-divider>
                     <v-list-item-title class="px-10 py-4 pontiner">
-                      <nuxt-link to="">
+                      <nuxt-link to="/questions">
                         <span class="font-weight-bold"> الأسئلة المكررة </span>
                       </nuxt-link>
                     </v-list-item-title>
@@ -226,7 +226,7 @@
                     </v-list-item-title>
                     <v-divider class="border-opacity-50"></v-divider>
                     <v-list-item-title class="px-10 py-4 pontiner">
-                      <nuxt-link to="">
+                      <nuxt-link to="/usage">
                         <span class="align-self-center font-weight-bold">
                           اتفاقية الاستخدام والخصوصية
                         </span>
@@ -234,7 +234,7 @@
                     </v-list-item-title>
                     <v-divider class="border-opacity-50"></v-divider>
                     <v-list-item-title class="px-10 py-4 pontiner">
-                      <nuxt-link to="">
+                      <nuxt-link to="/copyrights">
                         <span class="align-self-center font-weight-bold">
                           جميع الحقوق محفوظة
                         </span>
