@@ -63,10 +63,10 @@
               </div>
             </v-col>
             <v-col md="9" cols="12" class="ps-5">
-              <div class="border pa-2 my-2">
-                <div class="d-flex">
-                  <span class="ms-2">الاوسمة التي حصل عليها: </span>
-                  <user-bades :userId="$route.params.id"/>
+              <div class="my-2">
+                <p class="font-weight-bold">الاوسمة التي حصل عليها:</p>
+                <div class="border pa-2">
+                  <user-bades :userId="$route.params.id" />
                 </div>
               </div>
               <div class="rounded-xl mb-3" style="background-color: #e1fbde">

@@ -38,7 +38,7 @@
             class="px-2 my-3 font-weight-medium"
           >
             <div class="">
-              <nuxt-link class="pointer text-h6" to="/AboutSite">عن الموقع</nuxt-link>
+              <nuxt-link style="color: white" class="pointer text-h6" to="/AboutSite">عن الموقع</nuxt-link>
             </div>
             <div class="">
               <nuxt-link class="pointer text-h6" to="">طاقم الموقع</nuxt-link>
@@ -49,7 +49,7 @@
             class="px-2 my-3 font-weight-medium"
           >
             <div class="">
-              <nuxt-link class="pointer text-h6" to="/usage"
+              <nuxt-link style="color: white" class="pointer text-h6" to="/usage"
                 >إتفاقية الإستخدام وسياسة الخصوصية</nuxt-link
               >
             </div>
@@ -64,7 +64,7 @@
             class="px-2 my-3 font-weight-medium"
           >
             <div class="">
-              <nuxt-link class="pointer text-h6" to="/questions"
+              <nuxt-link style="color: white" class="pointer text-h6" to="/questions"
                 >الأسئلة المتكررة</nuxt-link
               >
             </div>
