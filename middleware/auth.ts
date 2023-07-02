@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         if (!isLogin) {
             console.log('not login');
 
-            window.location.href = "https://spectacular-pudding-31d85a.netlify.app/login?redirect=" + from.path;  // this reloads
+            window.location.href = "/login?redirect=" + from.path;  // this reloads
             // return navigateTo('/login?redirect=' + from.path);
         }
     }

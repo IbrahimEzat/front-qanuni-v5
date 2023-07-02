@@ -257,6 +257,34 @@
                     title="مستخدمين الموقع"
                   ></v-list-item>
                 </v-list-group>
+                <v-list-group
+                  class="text-black mb-1"
+                  style="background: #fefefe; border-radius: 5px"
+                >
+                  <template v-slot:activator="{ props }">
+                    <v-list-item
+                      v-bind="props"
+                      prepend-icon="mdi-account-group-outline"
+                      title=" الصفحات الثابتة "
+                    ></v-list-item>
+                  </template>
+                  <v-list-item
+                    @click="goToUrl('/admin/staticPages/addAboutSite')"
+                    title="معلومات حول الموقع"
+                  ></v-list-item>
+                  <v-list-item
+                    @click="goToUrl('/admin/staticPages/questions')"
+                    title="الاسئلة المكررة"
+                  ></v-list-item>
+                  <v-list-item
+                    @click="goToUrl('/admin/staticPages/usage')"
+                    title=" اتفافية الاستخدام والخصوصية"
+                  ></v-list-item>
+                  <v-list-item
+                    @click="goToUrl('/admin/staticPages/copyrights')"
+                    title="جميع حقوق النشر محفوطة"
+                  ></v-list-item>
+                </v-list-group>
               </v-list>
             </v-navigation-drawer>
 
