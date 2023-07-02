@@ -90,7 +90,6 @@ function initEditor() {
         container: "#" + props.counter_id,
         unit: "word",
       },
-      table:true
     },
   });
   quill.format("align", "right");
