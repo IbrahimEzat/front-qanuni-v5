@@ -1282,4 +1282,11 @@ useHead({
 .ql-editor {
   min-height: 100px;
 }
+.modal-backdrop {
+  position: relative !important;
+}
+.note-editor.note-frame .note-editing-area .note-editable {
+ 
+    direction: rtl !important;
+}
 </style>

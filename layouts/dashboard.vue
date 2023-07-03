@@ -323,6 +323,24 @@ function goToUrl(url) {
 const authStore = useAuthStore();
 useHead({
   title: "لوحة التحكم",
+  link: [
+    {
+      rel: "preconnect",
+      type: "text/css",
+      href: "https://fonts.googleapis.com",
+    },
+    {
+      rel: "preconnect",
+      type: "text/css",
+      href: "https://fonts.gstatic.com",
+    },
+
+    {
+      rel: "stylesheet",
+      type: "text/css",
+      href: "https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap",
+    },
+  ],
   script: [
     {
       src: "https://js.pusher.com/8.0.1/pusher.min.js",

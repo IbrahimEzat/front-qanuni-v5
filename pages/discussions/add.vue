@@ -244,7 +244,7 @@ useHead({
   link: [{ rel: "canonical", href: "https://alqanouni.com/" }],
 });
 </script>
-<style scoped>
+<style>
 .content img {
   max-width: 100%;
   max-height: 500px;

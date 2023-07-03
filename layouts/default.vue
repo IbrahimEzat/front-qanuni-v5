@@ -41,7 +41,7 @@
               <nuxt-link style="color: white" class="pointer text-h6" to="/AboutSite">عن الموقع</nuxt-link>
             </div>
             <div class="">
-              <nuxt-link class="pointer text-h6" to="">طاقم الموقع</nuxt-link>
+              <nuxt-link style="color: white" class="pointer text-h6" to="/staff">طاقم الموقع</nuxt-link>
             </div>
           </div>
           <div
@@ -54,7 +54,7 @@
               >
             </div>
             <div class="">
-              <nuxt-link class="pointer text-h6" to=""
+              <nuxt-link style="color: white" class="pointer text-h6" to=""
                 >تواصل معنا - دعم فني</nuxt-link
               >
             </div>
@@ -69,7 +69,7 @@
               >
             </div>
             <div class="">
-              <nuxt-link class="pointer text-h6" to="">الشركاء</nuxt-link>
+              <nuxt-link style="color: white" class="pointer text-h6" to="">الشركاء</nuxt-link>
             </div>
           </div>
           <div class="px-2 my-3 font-weight-medium text-center">
@@ -77,7 +77,7 @@
             <div>
               <a
                 style="color: white"
-                href="https://www.facebook.com/abdelhak.talib.334"
+                href="https://www.facebook.com/AlqanouniMaroc"
                 target="_blank"
                 class="mx-1 facebook pointer"
                 variant="text"
@@ -120,9 +120,15 @@ useHead({
       href: "https://fonts.googleapis.com",
     },
     {
+      rel: "preconnect",
+      type: "text/css",
+      href: "https://fonts.gstatic.com",
+    },
+    
+    {
       rel: "stylesheet",
       type: "text/css",
-      href: "https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800",
+      href: "https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap",
     },
   ],
   script: [
