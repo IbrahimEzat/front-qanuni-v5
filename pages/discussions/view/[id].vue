@@ -142,7 +142,8 @@
             class="px-5 pt-5 bg-blue-grey-lighten-5"
             style="border-bottom: 2px solid black"
           >
-            <div id="editor" class="content"></div>
+            <div id="summernote"></div>
+
             <div class="mt-2">
               <input v-model="checkbox" type="checkbox" name="" id="check" />
               <label for="check" class="mr-2 font-weight-bold"
@@ -792,24 +793,27 @@ useHead({
     {
       rel: "stylesheet",
       type: "text/css",
-      href: "https://cdn.quilljs.com/1.3.6/quill.snow.css",
+      href: "https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css",
+    },
+    {
+      rel: "stylesheet",
+      type: "text/css",
+      href: "https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css",
     },
   ],
   script: [
     {
-      src: "https://cdn.quilljs.com/1.3.6/quill.js",
+      src: "https://code.jquery.com/jquery-3.5.1.min.js",
+    },
+    {
+      src: "https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js",
+    },
+    {
+      src: "https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js",
     },
   ],
 });
-const toolbarOptions = [
-  [{ header: [1, 2, 3, 4, 5, 6, false] }],
-  ["bold", "italic", "underline", "strike"],
-  [{ color: [] }, { background: [] }],
-  [{ align: [] }],
-  ["link", "image"],
 
-  ["clean"],
-];
 
 //تمام
 const { data, error } = await useSendRequest("/discussions/getDiscussion ", {
@@ -955,7 +959,7 @@ async function checkWishList() {
 async function addOpinion() {
   if (authStore.isLogin) {
     addOpinionLoading.value = true;
-    let content = document.getElementById("editor")?.firstChild?.innerHTML;
+    let content = document.getElementsByClassName("note-editable")[0].innerHTML;
     const { data, error } = await useSendRequest(
       "/discussions/addOpinionDiscussion",
       {
@@ -1168,7 +1172,7 @@ async function addReply(opinion) {
   }
 }
 function tryGoToAddDiscussion() {
-  if (authStore.isLogin) return navigateTo("/discussions/add");
+  if (authStore.isLogin) return (window.location.href = "/discussions/add");
   dialog.value = true;
 }
 
@@ -1238,60 +1242,11 @@ async function minusCommentRate(opinion, comment) {
   }
 }
 
-function initEditor() {
-  class Counter {
-    quill;
-    options;
-    container;
-    constructor(quill, options) {
-      this.quill = quill;
-      this.options = options;
-      this.container = document.querySelector(options.container);
-      quill.on("text-change", this.update.bind(this));
-      this.update(); // Account for initial contents
-    }
 
-    calculate() {
-      let text = this.quill.getText();
-      if (this.options.unit === "word") {
-        text = text.trim();
-        // Splitting empty text returns a non-empty array
-        return text.length > 0 ? text.split(/\s+/).length : 0;
-      } else {
-        return text.length;
-      }
-    }
-
-    update() {
-      var length = this.calculate();
-      var label = this.options.unit;
-      if (length !== 1) {
-        label += "s";
-      }
-      // wordCount.value = length;
-      // this.container.innerText = "عدد الكلمات" + " : " + length;
-    }
-  }
-
-  Quill.register("modules/counter", Counter);
-  var quill = new Quill("#editor", {
-    theme: "snow",
-    modules: {
-      toolbar: toolbarOptions,
-      counter: {
-        container: "#counter",
-        unit: "word",
-      },
-    },
-  });
-  quill.format("align", "right");
-  return quill;
-}
 onMounted(() => {
-  let interval = setInterval(() => {
-    console.log("interval");
-    if (initEditor()) clearInterval(interval);
-  }, 2000);
+  $(document).ready(function () {
+    $("#summernote").summernote();
+  });
 });
 const decriptionMeta = computed(() => {
   if (process.client)

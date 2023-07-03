@@ -22,8 +22,8 @@
               <span>/ {{ categoryInfo.name }}</span></span
             >
 
-            <div class="imageHolder mt-2">
-              <nuxt-link to="/addBlog"
+            <div class="imageHolder mt-2 pointer" @click="goToAddBlog">
+              <nuxt-link 
                 ><v-img :width="100" src="/images/أضف-مقالة.png"></v-img
               ></nuxt-link>
             </div>
@@ -296,6 +296,10 @@ if (error.value) {
     categoryInfo.value = data.value.data;
     blogs.value = categoryInfo.value.blogs;
   }
+}
+
+function goToAddBlog(){
+  window.location.href = '/addBlog';
 }
 useHead({
   title:'مقالات - ' + categoryInfo.value.name,

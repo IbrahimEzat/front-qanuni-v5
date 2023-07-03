@@ -92,7 +92,7 @@ if(!errorCount.value && countData.value?.status)
   discussionNumber.value = countData.value.data as number;
 
 function tryGoToAddDiscussion() {
-  if (authStore.isLogin) return navigateTo("/discussions/add");
+  if (authStore.isLogin) return window.location.href = "/discussions/add";
   dialog.value = true;
 }
 function goToSearch() {

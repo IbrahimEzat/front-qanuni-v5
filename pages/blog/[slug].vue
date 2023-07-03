@@ -605,7 +605,7 @@ async function minusPoint() {
   }
 }
 function tryAddBlog() {
-  if (authStore.isLogin) return navigateTo("/addBlog");
+  if (authStore.isLogin) return window.location.href = "/addBlog";
   dialog.value = true;
 }
 async function deleteComment() {

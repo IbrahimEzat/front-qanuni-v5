@@ -12,21 +12,28 @@
         elevation="2"
       >
         <v-card-title
-          class="text-h6 d-flex justify-space-between font-weight-bold text-start"
+          class="text-h6 d-flex flex-wrap justify-space-between font-weight-bold text-start"
         >
           <div>
             <v-icon icon="mdi-account-group-outline"></v-icon> التحكم في
             مستخدمين الموقع
           </div>
-          <div>
+          <div class="d-flex flex-wrap">
             <v-btn
-              color="success"
-              @click="addPointsDialogShown = true"
+              class="mb-2"
+              color="primary"
+              @click="showNotifyDialog"
               :disabled="selectUsers.length == 0"
-              >أضف نقاط</v-btn
+              >أرسل إشعار للمستخدم</v-btn
             >
             <v-btn
-              class="ms-3"
+              class="mx-3"
+              color="success"
+              @click="showAddPointDialog"
+              :disabled="selectUsers.length == 0"
+              >إضافة/خصم نقاط</v-btn
+            >
+            <v-btn
               color="black"
               @click="addBadgesDialogShown = true"
               :disabled="selectUsers.length == 0"
@@ -134,14 +141,27 @@
     <v-dialog v-model="addPointsDialogShown" persistent width="400px">
       <v-card class="text-center" elevation="10">
         <v-card-title>
-          حدد عدد النقاط المراد إضافتها للمستخدم/المستخدمين
+          <div v-if="!actionNotify">
+            <p>حدد عدد النقاط المراد إضافتها/خصمها للمستخدمين</p>
+            <p class="bg-error">أدخل الرقم بالسالب في حالة الخصم</p>
+          </div>
+          <p v-else>يمكنك إرسال إشعار للمستخدمين المحددين</p>
         </v-card-title>
         <v-card-text dir="rtl">
           <v-text-field
+            v-if="!actionNotify"
             class="text-end"
             v-model="pointsToAdd"
             required
             label="عدد النقاط"
+            variant="outlined"
+          ></v-text-field>
+
+          <v-text-field
+            class="text-end"
+            v-model="messageToSend"
+            required
+            label="اترك رسالتك هنا"
             variant="outlined"
           ></v-text-field>
         </v-card-text>
@@ -149,7 +169,10 @@
           <v-btn
             color="black"
             variant="outlined"
-            @click="addPointsDialogShown = false"
+            @click="
+              addPointsDialogShown = false;
+              actionNotify = false;
+            "
             >إغلاق</v-btn
           >
           <v-btn
@@ -162,6 +185,37 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <!-- <v-dialog v-model="addPointsDialogShown" persistent width="400px">
+      <v-card class="text-center" elevation="10">
+        <v-card-title>
+          <p>يمكنك إرسال إشعار للمستخدمين المحددين</p>
+        </v-card-title>
+        <v-card-text dir="rtl">
+          <v-text-field
+            class="text-end"
+            v-model="messageToSend"
+            required
+            label="اترك رسالتك هنا"
+            variant="outlined"
+          ></v-text-field>
+        </v-card-text>
+        <v-card-actions class="justify-end">
+          <v-btn
+            color="black"
+            variant="outlined"
+            @click=""
+            >إغلاق</v-btn
+          >
+          <v-btn
+            variant="flat"
+            color="primary"
+            @click="confirmAddPoints"
+            :loading="loadingAddPoints"
+            >تأكيد</v-btn
+          >
+        </v-card-actions>
+      </v-card>
+    </v-dialog> -->
     <v-dialog v-model="addBadgesDialogShown" persistent width="400px">
       <v-card class="text-center" elevation="10">
         <v-card-title>
@@ -213,8 +267,10 @@ const addBadgesDialogShown = ref(false);
 const badgeToAdd = ref();
 const selectUsers = ref([]);
 const pointsToAdd = ref(0);
+const messageToSend = ref();
 const users = ref();
 const isDeleteDialogShow = ref(false);
+const actionNotify = ref(false);
 const serviceWantDelete = ref();
 const loadingDelete = ref(false);
 const itemPerPage = ref(10);
@@ -250,12 +306,26 @@ const filteredusers = computed(() => {
   return users.value;
 });
 
+const showNotifyDialog = ()=>{
+  actionNotify.value = true;
+  showAddPointDialog();
+}
+
+const showAddPointDialog = () => {
+  addPointsDialogShown.value = true;
+  pointsToAdd.value = 0;
+  messageToSend.value = "";
+};
 const confirmAddPoints = () => {
-  setToastMessage("جار إرسال النقاط للمستخدمين المحددين");
+  if(pointsToAdd.value != 0)
+    setToastMessage("جار إرسال/خصم النقاط للمستخدمين المحددين");
+  else
+    setToastMessage("جار إرسال الإشعار للمستخدمين المحددين");
   addPointsDialogShown.value = false;
   useSendRequest("/notificatoin/admin/users/givePoints", {
     users: selectUsers.value,
     points: pointsToAdd.value,
+    message: messageToSend.value,
   });
 };
 

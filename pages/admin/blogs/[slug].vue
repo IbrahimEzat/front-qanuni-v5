@@ -20,7 +20,9 @@
         </div>
         <div>
           <p class="text-h6">المقال</p>
-          <div id="editor" class="content"></div>
+          <div id="summernote"></div>
+
+          <!-- <div id="editor" class="content"></div>
           <div
             style="font-size: 15px"
             class="text-black mb-10 font-weight-medium d-flex justify-space-between"
@@ -31,7 +33,7 @@
 
           <p class="text-error" v-if="errorMessages.content">
             {{ errorMessages.content[0] }}
-          </p>
+          </p> -->
           <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
         </div>
         <div>
@@ -56,7 +58,6 @@
 
         <div style="text-align: end">
           <v-btn
-            :disabled="!readyToChange"
             :loading="changeButtonLoading"
             variant="outlined"
             class="rounded-pill mt-3"
@@ -94,10 +95,29 @@ useHead({
       type: "text/css",
       href: "https://cdn.quilljs.com/1.3.6/quill.snow.css",
     },
+    {
+      rel: "stylesheet",
+      type: "text/css",
+      href: "https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css",
+    },
+    {
+      rel: "stylesheet",
+      type: "text/css",
+      href: "https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css",
+    },
   ],
   script: [
     {
       src: "https://cdn.quilljs.com/1.3.6/quill.js",
+    },
+    {
+      src: "https://code.jquery.com/jquery-3.5.1.min.js",
+    },
+    {
+      src: "https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js",
+    },
+    {
+      src: "https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js",
     },
   ],
 });
@@ -113,9 +133,7 @@ const categorySelect = ref();
 const categories = ref();
 
 const wordCount = ref(0);
-const readyToChange = computed(() => {
-  return wordCount.value >= 10 && title.value.length > 0;
-});
+
 const changeButtonLoading = ref(false);
 const addBlogLoading = ref(false);
 const blogInfo = ref();
@@ -198,8 +216,9 @@ if (errorSelected.value) {
 
 async function updateBlog() {
   changeButtonLoading.value = true;
-  let content = document.getElementById("editor")
-    ?.firstChild as HTMLInputElement;
+  let content = document.getElementsByClassName("note-editable")[0].innerHTML;
+  // document.getElementById("editor")
+  //   ?.firstChild as HTMLInputElement;
 
   const { data, error } = await useSendRequest<responseReturn>(
     "/admin/blogs/update",
@@ -207,7 +226,7 @@ async function updateBlog() {
       blog_id: blogInfo.value.id,
       category_ids: categorySelect.value,
       title: title.value,
-      content: content.innerHTML,
+      content: content,
       token: authStore.token,
     }
   );
@@ -232,73 +251,89 @@ async function updateBlog() {
   }
 }
 
-function initEditor() {
-  class Counter {
-    quill: any;
-    options: any;
-    container: any;
-    constructor(quill: any, options: any) {
-      this.quill = quill;
-      this.options = options;
-      this.container = document.querySelector(options.container);
-      quill.on("text-change", this.update.bind(this));
-      this.update(); // Account for initial contents
-    }
+// function initEditor() {
+//   class Counter {
+//     quill: any;
+//     options: any;
+//     container: any;
+//     constructor(quill: any, options: any) {
+//       this.quill = quill;
+//       this.options = options;
+//       this.container = document.querySelector(options.container);
+//       quill.on("text-change", this.update.bind(this));
+//       this.update(); // Account for initial contents
+//     }
 
-    calculate() {
-      let text = this.quill.getText();
-      if (this.options.unit === "word") {
-        text = text.trim();
-        // Splitting empty text returns a non-empty array
-        return text.length > 0 ? text.split(/\s+/).length : 0;
-      } else {
-        return text.length;
-      }
-    }
+//     calculate() {
+//       let text = this.quill.getText();
+//       if (this.options.unit === "word") {
+//         text = text.trim();
+//         // Splitting empty text returns a non-empty array
+//         return text.length > 0 ? text.split(/\s+/).length : 0;
+//       } else {
+//         return text.length;
+//       }
+//     }
 
-    update() {
-      var length = this.calculate();
-      var label = this.options.unit;
-      if (length !== 1) {
-        label += "s";
-      }
-      wordCount.value = length;
-      this.container.innerText = "عدد الكلمات" + " : " + length;
-    }
-  }
+//     update() {
+//       var length = this.calculate();
+//       var label = this.options.unit;
+//       if (length !== 1) {
+//         label += "s";
+//       }
+//       wordCount.value = length;
+//       this.container.innerText = "عدد الكلمات" + " : " + length;
+//     }
+//   }
 
-  let interval = setInterval(() => {
-    console.log("interval");
-    Quill.register("modules/counter", Counter);
+//   let interval = setInterval(() => {
+//     console.log("interval");
+//     Quill.register("modules/counter", Counter);
 
-    var quill = new Quill("#editor", {
-      theme: "snow",
-      modules: {
-        toolbar: toolbarOptions,
-        counter: {
-          container: "#counter",
-          unit: "word",
-        },
-      },
-    });
+//     var quill = new Quill("#editor", {
+//       theme: "snow",
+//       modules: {
+//         toolbar: toolbarOptions,
+//         counter: {
+//           container: "#counter",
+//           unit: "word",
+//         },
+//       },
+//     });
 
-    if (quill) {
-      let myContainer = document.getElementById("editor")
-        ?.firstChild as HTMLInputElement;
-      myContainer.innerHTML = blogInfo.value.content;
-      clearInterval(interval);
-    }
-  }, 100);
-}
+//     if (quill) {
+//       let myContainer = document.getElementById("editor")
+//         ?.firstChild as HTMLInputElement;
+//       myContainer.innerHTML = blogInfo.value.content;
+//       clearInterval(interval);
+//     }
+//   }, 100);
+// }
 
 onMounted(() => {
-  initEditor();
+  // initEditor();
+  $(document).ready(function () {
+    $("#summernote").summernote();
+  });
+  let interval = setInterval(() => {
+    const noteDom = document.getElementsByClassName("note-editable")[0];
+    if (noteDom) {
+      noteDom.innerHTML = blogInfo.value.content;
+      clearInterval(interval);
+    }
+  }, 200);
 });
 </script>
 <style scoped>
 .content img {
   max-width: 100%;
   max-height: 500px;
+}
+.modal-backdrop {
+  position: relative !important;
+}
+.note-editor.note-frame .note-editing-area .note-editable {
+  direction: rtl !important;
 }
 </style>
   

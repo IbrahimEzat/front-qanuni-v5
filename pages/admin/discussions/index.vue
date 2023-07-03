@@ -46,7 +46,7 @@
                     <v-btn color="error" prepend-icon="mdi-delete" class="me-5" size="small"
                       @click="showDeleteDialog(item.id)">حذف</v-btn>
                     <v-btn color="primary" size="small" prepend-icon="mdi-pencil"
-                      @click="$router.push('/admin/discussions/' + item.id)">تعديل</v-btn>
+                      @click="goToUrl('/admin/discussions/' + item.id)">تعديل</v-btn>
                   </td>
                 </tr>
               </tbody>
@@ -122,6 +122,9 @@ const blogsWantUpdateId = ref(-1);
 // watch(orderFillter, (newValue) => {
 //   disscussions.value.reverse();
 // });
+function goToUrl(url:string){
+  window.location.href = url;
+}
 
 const showDeleteDialog = (id: number) => {
   discussionWantDelete.value = id;

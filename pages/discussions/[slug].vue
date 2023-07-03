@@ -89,7 +89,7 @@
         >
           <v-row
             class="pointer"
-            @click="$router.push('/discussions/view/' + discussion.id)"
+            @click="goToUrl('/discussions/view/' + discussion.id)"
           >
             <v-col cols="10">
               <p class="text-h4 text-center mr-16">{{ discussion.title }}</p>
@@ -311,6 +311,12 @@ const fillterDiscussions = computed(() => {
   return discussions.value;
 });
 
+
+function goToUrl(url:string){
+  window.location.href = url;
+}
+
+
 const currentDiscussions = computed(() => {
   return discussionsSearch.value.slice(0, itemPerPage.value * pageNumber.value);
 });
@@ -329,7 +335,7 @@ if (error.value) {
 }
 
 function tryGoToAddDiscussion() {
-  if (authStore.isLogin) return navigateTo("/discussions/add");
+  if (authStore.isLogin) return window.location.href = "/discussions/add";
   dialog.value = true;
 }
 useHead({

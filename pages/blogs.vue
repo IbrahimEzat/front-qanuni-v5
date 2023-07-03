@@ -126,7 +126,7 @@ if(!errorCount.value && countData.value?.status)
   
 
 function tryGoToAddBlog() {
-  if (authStore.isLogin) return navigateTo("/addBlog");
+  if (authStore.isLogin) return window.location.href = "/addBlog";
   dialog.value = true;
 }
 

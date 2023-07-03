@@ -190,7 +190,7 @@
                     </v-list-item-title>
                     <v-divider class="border-opacity-50"></v-divider>
                     <v-list-item-title class="px-10 py-4 pontiner">
-                      <nuxt-link to="">
+                      <nuxt-link to="/staff">
                         <span class="align-self-center font-weight-bold">
                           طاقم الموقع
                         </span>
@@ -392,6 +392,10 @@ span {
 a {
   text-decoration: none;
   color: black;
+}
+hr{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 </style>
 

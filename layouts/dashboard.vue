@@ -264,6 +264,22 @@
                   <template v-slot:activator="{ props }">
                     <v-list-item
                       v-bind="props"
+                      prepend-icon="mdi-face-agent"
+                      title="طاقم الموقع"
+                    ></v-list-item>
+                  </template>
+                  <v-list-item
+                    @click="goToUrl('/admin/staticPages/staff')"
+                    title="التحكم بطاقم الموقع"
+                  ></v-list-item>
+                </v-list-group>
+                <v-list-group
+                  class="text-black mb-1"
+                  style="background: #fefefe; border-radius: 5px"
+                >
+                  <template v-slot:activator="{ props }">
+                    <v-list-item
+                      v-bind="props"
                       prepend-icon="mdi-account-group-outline"
                       title=" الصفحات الثابتة "
                     ></v-list-item>

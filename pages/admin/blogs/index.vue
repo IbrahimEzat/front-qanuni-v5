@@ -93,7 +93,7 @@
                       color="primary"
                       size="small"
                       prepend-icon="mdi-pencil"
-                      @click="$router.push('/admin/blogs/' + item.slug)"
+                      @click="goToUrl('/admin/blogs/' + item.slug)"
                       >تعديل</v-btn
                     >
                   </td>
@@ -184,6 +184,9 @@ const isUpdateDialogShown = ref(false);
 const blogsWantUpdateId = ref(-1);
 const search = ref();
 
+function goToUrl(url:string){
+  window.location.href = url;
+}
 // watch(orderFillter, (newValue) => {
 //   blogs.value.reverse();
 // });
