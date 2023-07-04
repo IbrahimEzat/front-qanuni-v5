@@ -82,17 +82,30 @@
         <bannar-center></bannar-center>
         <v-card
           border
-          class="mx-3 my-10 pa-5 d-flex"
+          class="mx-2 my-10 pa-5 justify-center d-flex"
           style="width: 97.5%; border-radius: 20px"
           v-for="discussion in currentDiscussions"
           :key="discussion.id"
         >
           <v-row
-            class="pointer"
+            class="pointer justify-center"
             @click="goToUrl('/discussions/view/' + discussion.id)"
           >
-            <v-col cols="10">
-              <p class="text-h4 text-center mr-16">{{ discussion.title }}</p>
+            <v-col sm="10" cols="12">
+              <h6 class="d-flex justify-center">
+                <p
+                  class="text-h5"
+                  style="
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    width: 345px;
+                    overflow: hidden;
+                  "
+                >
+                  {{ discussion.title }}
+                </p>
+              </h6>
               <div class="d-flex">
                 <div class="imageHolder" style="width: 40px; height: 40px">
                   <v-avatar>
@@ -123,9 +136,12 @@
                 </div>
                 <p class="text-body-2 ml-4 mt-1 align-self-center">
                   {{
-                    new Date(discussion.created_at).toLocaleDateString(['ban','id'], {
-                      hour12: false,
-                    })
+                    new Date(discussion.created_at).toLocaleDateString(
+                      ["ban", "id"],
+                      {
+                        hour12: false,
+                      }
+                    )
                   }}
                 </p>
                 <div
@@ -166,7 +182,7 @@
                 </p>
               </div>
             </v-col>
-            <v-col cols="2" align-self="center">
+            <v-col sm="2" cols="7" align-self="center">
               <p
                 style="
                   border: 2px solid #333;
@@ -230,7 +246,7 @@ import { useSettingsStore } from "~/stores/useSettings";
 import { responseReturn } from "~/types/tpes";
 const { setToastMessage } = useSettingsStore();
 const authStore = useAuthStore();
-const filterSelect = ref('newest');
+const filterSelect = ref("newest");
 const route = useRoute();
 const categoryInfo = ref();
 const pageNumber = ref(1);
@@ -240,13 +256,13 @@ const search = ref();
 const itemPerPage = ref(8);
 const discussions = ref();
 
-const discussionsSearch = computed(()=> {
-  if(search.value){
-    return fillterDiscussions.value.filter((item :any)=>{
+const discussionsSearch = computed(() => {
+  if (search.value) {
+    return fillterDiscussions.value.filter((item: any) => {
       return item.title.toLowerCase().search(search.value.toLowerCase()) > -1;
     });
   }
-  return fillterDiscussions.value
+  return fillterDiscussions.value;
 });
 const fillterDiscussions = computed(() => {
   if (filterSelect.value === "newest") {
@@ -311,11 +327,9 @@ const fillterDiscussions = computed(() => {
   return discussions.value;
 });
 
-
-function goToUrl(url:string){
+function goToUrl(url: string) {
   window.location.href = url;
 }
-
 
 const currentDiscussions = computed(() => {
   return discussionsSearch.value.slice(0, itemPerPage.value * pageNumber.value);
@@ -335,23 +349,32 @@ if (error.value) {
 }
 
 function tryGoToAddDiscussion() {
-  if (authStore.isLogin) return window.location.href = "/discussions/add";
+  if (authStore.isLogin) return (window.location.href = "/discussions/add");
   dialog.value = true;
 }
 useHead({
-  title:'مناقشات - ' + categoryInfo.value.name,
+  title: "مناقشات - " + categoryInfo.value.name,
   meta: [
-    { name: "description", content: 'تحتوي هذه الصفحة على أهم المناقشات المتعلقة بتصنيف ' + categoryInfo.value.name },
-    { property: "og:description", content: 'تحتوي هذه الصفحة على أهم المناقشات المتعلقة بتصنيف ' + categoryInfo.value.name  },
-    { property: "og:image", content: '/images/مناقشات.png' },
+    {
+      name: "description",
+      content:
+        "تحتوي هذه الصفحة على أهم المناقشات المتعلقة بتصنيف " +
+        categoryInfo.value.name,
+    },
+    {
+      property: "og:description",
+      content:
+        "تحتوي هذه الصفحة على أهم المناقشات المتعلقة بتصنيف " +
+        categoryInfo.value.name,
+    },
+    { property: "og:image", content: "/images/مناقشات.png" },
     { name: "twitter:card", content: "summay_large_image" },
-    { property:'og:locale',content:'ar_ar'},
-    { property:'og:url',content:'https://alqanouni.com/'},
-    { property:'og:type',content:'website'}
+    { property: "og:locale", content: "ar_ar" },
+    { property: "og:url", content: "https://alqanouni.com/" },
+    { property: "og:type", content: "website" },
   ],
-  link:[{rel:'canonical',href:'https://alqanouni.com/'}],
+  link: [{ rel: "canonical", href: "https://alqanouni.com/" }],
 });
-
 </script>
       
     <style>

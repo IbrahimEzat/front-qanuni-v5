@@ -96,30 +96,30 @@
                               to="/arrangment"
                               class="d-flex px-2 py-4 pontiner"
                             >
-                              <img
-                                src="/images/ترتيب-الأعضاء.png"
-                                alt=""
-                                class="iconSm"
-                              />
                               <span
                                 class="align-self-center font-weight-bold ms-2"
                               >
                                 ترتيب الاعضاء
                               </span>
+                              <img
+                                src="/images/ترتيب-الأعضاء.png"
+                                alt=""
+                                class="iconSm"
+                              />
                             </nuxt-link>
                           </v-list-item-title>
                           <v-divider class="border-opacity-50"></v-divider>
 
                           <v-list-item-title>
                             <nuxt-link to="" class="d-flex px-2 py-4 pontiner">
+                              <span class="align-self-center font-weight-bold">
+                                قائمة مفضلاتي
+                              </span>
                               <img
                                 src="/images/قائمة-المفضلة-قبل-الضغط.png"
                                 alt=""
                                 class="iconSm"
                               />
-                              <span class="align-self-center font-weight-bold">
-                                قائمة مفضلاتي
-                              </span>
                             </nuxt-link>
                           </v-list-item-title>
                           <v-divider class="border-opacity-50"></v-divider>
@@ -129,16 +129,16 @@
                               to="/updateProfile"
                               class="d-flex px-2 py-4 pontiner"
                             >
-                              <img
-                                src="/images/إعدادات-الحساب.png"
-                                alt=""
-                                class="iconSm"
-                              />
                               <span
                                 class="align-self-center font-weight-bold ms-2"
                               >
                                 تعديل حسابي
                               </span>
+                              <img
+                                src="/images/إعدادات-الحساب.png"
+                                alt=""
+                                class="iconSm"
+                              />
                             </nuxt-link>
                           </v-list-item-title>
                           <v-divider class="border-opacity-50"></v-divider>
@@ -149,14 +149,14 @@
                               to=""
                               class="d-flex px-2 py-4 pontiner"
                             >
+                              <span class="align-self-center font-weight-bold">
+                                تسجيل الخروج
+                              </span>
                               <img
                                 src="/images/تسجيل-الخروج.png"
                                 alt=""
                                 class="iconSm"
                               />
-                              <span class="align-self-center font-weight-bold">
-                                تسجيل الخروج
-                              </span>
                             </nuxt-link>
                           </v-list-item-title>
                         </div>
@@ -165,76 +165,76 @@
                       <v-list-item-title>
                         <nuxt-link
                           to="/blogs"
-                          class="d-flex px-10 py-4 pontiner"
+                          class="d-flex justify-center py-4 pontiner"
                         >
-                          <img src="/images/مقالات.png" alt="" class="iconSm" />
                           <span class="align-self-center font-weight-bold"
                             >المقالات
                           </span>
+                          <img src="/images/مقالات.png" alt="" class="iconSm" />
                         </nuxt-link>
                       </v-list-item-title>
                       <v-divider class="border-opacity-50"></v-divider>
                       <v-list-item-title>
                         <nuxt-link
                           to="/discussions"
-                          class="d-flex px-10 py-4 pontiner"
+                          class="d-flex justify-center py-4 pontiner"
                         >
+                          <span class="align-self-center font-weight-bold">
+                            مناقشات
+                          </span>
                           <img
                             src="/images/مناقشات.png"
                             alt=""
                             class="iconSm"
                           />
-                          <span class="align-self-center font-weight-bold">
-                            مناقشات
-                          </span>
                         </nuxt-link>
                       </v-list-item-title>
                       <v-divider class="border-opacity-50"></v-divider>
                       <v-list-item-title>
                         <nuxt-link
                           to="/library"
-                          class="d-flex px-10 py-4 pontiner"
+                          class="d-flex justify-center py-4 pontiner"
                         >
+                          <span class="align-self-center font-weight-bold">
+                            المكتبة
+                          </span>
                           <img
                             src="/images/المكتبة.png"
                             alt=""
                             class="iconSm"
                           />
-                          <span class="align-self-center font-weight-bold">
-                            المكتبة
-                          </span>
                         </nuxt-link>
                       </v-list-item-title>
                       <v-divider class="border-opacity-50"></v-divider>
                       <v-list-item-title>
                         <nuxt-link
                           to="/surveys"
-                          class="d-flex px-10 py-4 pontiner"
+                          class="d-flex justify-center py-4 pontiner"
                         >
+                          <span class="align-self-center font-weight-bold">
+                            استطلاعات
+                          </span>
                           <img
                             src="/images/استطلاعات.png"
                             alt=""
                             class="iconSm"
                           />
-                          <span class="align-self-center font-weight-bold">
-                            استطلاعات
-                          </span>
                         </nuxt-link>
                       </v-list-item-title>
                       <v-divider class="border-opacity-50"></v-divider>
                       <v-list-item-title>
                         <nuxt-link
                           to="/exams"
-                          class="d-flex px-10 py-4 pontiner"
+                          class="d-flex justify-center py-4 pontiner"
                         >
+                          <span class="align-self-center font-weight-bold">
+                            إختبارات
+                          </span>
                           <img
                             src="/images/اختبارات.png"
                             alt=""
                             class="iconSm"
                           />
-                          <span class="align-self-center font-weight-bold">
-                            إختبارات
-                          </span>
                         </nuxt-link>
                       </v-list-item-title>
                       <v-divider class="border-opacity-50"></v-divider>
@@ -242,30 +242,30 @@
                       <v-list-item-title>
                         <nuxt-link
                           to="/competitions"
-                          class="d-flex px-10 py-4 pontiner"
+                          class="d-flex justify-center py-4 pontiner"
                         >
+                          <span class="align-self-center font-weight-bold">
+                            مسابقات
+                          </span>
                           <img
                             src="/images/مسابقات.png"
                             alt=""
                             class="iconSm"
                           />
-                          <span class="align-self-center font-weight-bold">
-                            مسابقات
-                          </span>
                         </nuxt-link>
                       </v-list-item-title>
                       <v-divider class="border-opacity-50"></v-divider>
 
                       <v-list-item-title>
-                        <nuxt-link to="" class="d-flex px-10 py-4 pontiner">
+                        <nuxt-link to="" class="d-flex justify-center py-4 pontiner">
+                          <span class="align-self-center font-weight-bold">
+                            استشارات
+                          </span>
                           <img
                             src="/images/استشارات.png"
                             alt=""
                             class="iconSm"
                           />
-                          <span class="align-self-center font-weight-bold">
-                            استشارات
-                          </span>
                         </nuxt-link>
                       </v-list-item-title>
                       <v-divider class="border-opacity-50"></v-divider>
@@ -273,12 +273,12 @@
                       <v-list-item-title>
                         <nuxt-link
                           to="/services"
-                          class="d-flex px-10 py-4 pontiner"
+                          class="d-flex justify-center py-4 pontiner"
                         >
-                          <img src="/images/market.png" alt="" class="iconSm" />
                           <span class="align-self-center font-weight-bold">
                             خدمات
                           </span>
+                          <img src="/images/market.png" alt="" class="iconSm" />
                         </nuxt-link>
                       </v-list-item-title>
                     </v-list-item>
@@ -328,7 +328,7 @@
                     </v-list-item-title>
                     <v-divider class="border-opacity-50"></v-divider>
                     <v-list-item-title class="px-10 py-4 pontiner">
-                      <nuxt-link to="">
+                      <nuxt-link to="/contact">
                         <span class="font-weight-bold"> للتواصل معنا </span>
                       </nuxt-link>
                     </v-list-item-title>
@@ -340,9 +340,9 @@
                     </v-list-item-title>
                     <v-divider class="border-opacity-50"></v-divider>
                     <v-list-item-title>
-                      <nuxt-link to="" class="d-flex px-10 py-4 pontiner">
+                      <nuxt-link to="" class="d-flex justify-center py-4">
                         <a
-                          style="color: white"
+                          style="color: blue"
                           href="https://www.facebook.com/AlqanouniMaroc"
                           target="_blank"
                           class="facebook pointer"
@@ -351,7 +351,7 @@
                           <v-icon icon="mdi-facebook"></v-icon>
                         </a>
                         <a
-                          style="color: white"
+                          style="color: red"
                           href="https://www.youtube.com/@ABDELHAKTALIB"
                           target="_blank"
                           class="mx-2 youtube pointer"

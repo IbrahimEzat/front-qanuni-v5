@@ -273,6 +273,14 @@
                     title="التحكم بطاقم الموقع"
                   ></v-list-item>
                 </v-list-group>
+                <v-list-item
+                  class="mb-1"
+                  style="background-color: white"
+                  link
+                  prepend-icon="mdi-shape-plus"
+                  title="طلبات التواصل"
+                  @click="goToUrl('/admin/contact')"
+                ></v-list-item>
                 <v-list-group
                   class="text-black mb-1"
                   style="background: #fefefe; border-radius: 5px"
@@ -351,8 +359,8 @@ useHead({
 onMounted(() => {
   const interval = setInterval(() => {
     if (process.client) {
-      var pusher = new Pusher("cd9ce3c8c8ce79dd100e", {
-        cluster: "ap2",
+      var pusher = new Pusher("3f11ae38768814455195", {
+        cluster: "eu",
         // appId: "1473088",
         // secret: "90470554fb9a1e81cdc5",
         // authEndpoint: "/api/pusher", // endpoint to authenticate user

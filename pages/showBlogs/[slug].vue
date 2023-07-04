@@ -1,5 +1,11 @@
 <template>
-  <v-card v-if="categoryInfo" min-height="100vh" color="#f4f4f4" dir="rtl" class="">
+  <v-card
+    v-if="categoryInfo"
+    min-height="100vh"
+    color="#f4f4f4"
+    dir="rtl"
+    class=""
+  >
     <v-row class="mx-1">
       <v-col md="2" sm="0">
         <bannar-slide></bannar-slide>
@@ -23,7 +29,7 @@
             >
 
             <div class="imageHolder mt-2 pointer" @click="goToAddBlog">
-              <nuxt-link 
+              <nuxt-link
                 ><v-img :width="100" src="/images/أضف-مقالة.png"></v-img
               ></nuxt-link>
             </div>
@@ -62,7 +68,7 @@
               </v-select>
             </div>
             <v-text-field
-            v-model="search"
+              v-model="search"
               clearable
               style="max-width: 200px; max-height: 9px"
               class="rounded-pill"
@@ -80,88 +86,102 @@
         <bannar-center></bannar-center>
         <v-card
           border
-          class="mx-3 my-10 pa-5 d-flex"
-          style="width: 97.5%; border-radius: 20px"
+          class="mx-2 my-10 pa-3 justify-center d-flex"
+          style="border-radius: 20px"
           v-for="blog in currentBlogs"
           :key="blog.id"
         >
-          <v-row class="pointer" @click="$router.push('/blog/'+blog.slug)">
-            <v-col cols="10">
-              <p class="text-h4 text-center mr-16">{{ blog.title }}</p>
-              <div class="d-flex">
-                <div class="imageHolder" style="width: 40px; height: 40px">
-                  <v-avatar>
-                    <v-img cover :src="blog.user.image"></v-img>
-                  </v-avatar>
-                </div>
-                <p class="align-self-center font-weight-bold mr-2">
-                  {{ blog.user.name }}
-                </p>
+          <v-row class="pointer justify-center" @click="$router.push('/blog/' + blog.slug)">
+            <v-col sm="10" cols="12">
+              <div>
+                <h6 class="text-h5 d-flex justify-center ">
+                  <p
+                    style="
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      width: 340px;
+                      overflow: hidden;
+                    "
+                  >
+                    {{ blog.title }}
+                  </p>
+                </h6>
+                <div class="d-flex">
+                  <div class="imageHolder" style="width: 40px; height: 40px">
+                    <v-avatar>
+                      <v-img cover :src="blog.user.image"></v-img>
+                    </v-avatar>
+                  </div>
+                  <p class="align-self-center font-weight-bold mr-2">
+                    {{ blog.user.name }}
+                  </p>
 
-                <!-- <v-banner border="none" lines="one" :text="blog.content" class="font-weight-black" >
+                  <!-- <v-banner border="none" lines="one" :text="blog.content" class="font-weight-black" >
                   </v-banner> -->
-                <hr
-                  style="border-top: 1px solid black"
-                  class="align-self-center flex-grow-1 ms-3"
-                />
-                <!-- <v-divider class="border-opacity-100 align-self-center mr-3 " style="max-width: 75%; min-width: 75%;"></v-divider> -->
-              </div>
-              <div class="d-flex justify-end">
-                <div
-                  class="imageHolder ml-1 align-self-center"
-                  style="width: 15px; height: 15px"
-                >
-                  <v-img
-                    src="/images/تاريخ.png"
-                    style="width: 100%; height: 100%"
-                  ></v-img>
+                  <hr
+                    style="border-top: 1px solid black"
+                    class="align-self-center flex-grow-1 ms-3"
+                  />
+                  <!-- <v-divider class="border-opacity-100 align-self-center mr-3 " style="max-width: 75%; min-width: 75%;"></v-divider> -->
                 </div>
-                <p class="text-body-2 ml-4 mt-1 align-self-center">
-                  {{
-                    new Date(blog.created_at).toLocaleString([], {
-                      hour12: false,
-                    })
-                  }}
-                </p>
-                <div
-                  class="imageHolder ml-1 align-self-center"
-                  style="width: 15px; height: 15px"
-                >
-                  <v-img
-                    src="/images/عدد-المشاهدات.png"
-                    style="width: 100%; height: 100%"
-                  ></v-img>
+                <div class="d-flex justify-end">
+                  <div
+                    class="imageHolder ml-1 align-self-center"
+                    style="width: 15px; height: 15px"
+                  >
+                    <v-img
+                      src="/images/تاريخ.png"
+                      style="width: 100%; height: 100%"
+                    ></v-img>
+                  </div>
+                  <p class="text-body-2 ml-4 mt-1 align-self-center">
+                    {{
+                      new Date(blog.created_at).toLocaleString([], {
+                        hour12: false,
+                      })
+                    }}
+                  </p>
+                  <div
+                    class="imageHolder ml-1 align-self-center"
+                    style="width: 15px; height: 15px"
+                  >
+                    <v-img
+                      src="/images/عدد-المشاهدات.png"
+                      style="width: 100%; height: 100%"
+                    ></v-img>
+                  </div>
+                  <p class="text-body-2 ml-4 mt-1 align-self-center">
+                    {{ blog.blog_views.blog_views }}
+                  </p>
+                  <div
+                    class="imageHolder ml-1 align-self-center"
+                    style="width: 15px; height: 15px"
+                  >
+                    <v-img
+                      src="/images/عدد-التعليقات.png"
+                      style="width: 100%; height: 100%"
+                    ></v-img>
+                  </div>
+                  <p class="text-body-2 ml-4 mt-1 align-self-center">
+                    {{ blog.blog_comment_counts.blog_comments }}
+                  </p>
+                  <div
+                    class="imageHolder ml-1 align-self-center"
+                    style="width: 15px; height: 15px"
+                  >
+                    <v-img
+                      src="/images/قائمة-المفضلة-قبل-الضغط.png"
+                      style="width: 100%; height: 100%"
+                    ></v-img>
+                  </div>
+                  <p class="text-body-2 mt-1 align-self-center">
+                    {{ blog.blog_wish_list_counts.count }}
+                  </p>
                 </div>
-                <p class="text-body-2 ml-4 mt-1 align-self-center">
-                  {{ blog.blog_views.blog_views }}
-                </p>
-                <div
-                  class="imageHolder ml-1 align-self-center"
-                  style="width: 15px; height: 15px"
-                >
-                  <v-img
-                    src="/images/عدد-التعليقات.png"
-                    style="width: 100%; height: 100%"
-                  ></v-img>
-                </div>
-                <p class="text-body-2 ml-4 mt-1 align-self-center">
-                  {{ blog.blog_comment_counts.blog_comments }}
-                </p>
-                <div
-                  class="imageHolder ml-1 align-self-center"
-                  style="width: 15px; height: 15px"
-                >
-                  <v-img
-                    src="/images/قائمة-المفضلة-قبل-الضغط.png"
-                    style="width: 100%; height: 100%"
-                  ></v-img>
-                </div>
-                <p class="text-body-2 mt-1 align-self-center">
-                  {{ blog.blog_wish_list_counts.count }}
-                </p>
               </div>
             </v-col>
-            <v-col cols="2" align-self="center">
+            <v-col sm="2" cols="7" class="font-weight-bold" align-self="center">
               <p
                 style="
                   border: 2px solid #333;
@@ -208,7 +228,7 @@
 import { useSettingsStore } from "~/stores/useSettings";
 import { responseReturn } from "~/types/tpes";
 const { setToastMessage } = useSettingsStore();
-const filterSelect = ref('newest');
+const filterSelect = ref("newest");
 const route = useRoute();
 const categoryInfo = ref();
 const pageNumber = ref(1);
@@ -274,12 +294,12 @@ const fillterBlogs = computed(() => {
   }
   return blogs.value;
 });
-const searchBlogs = computed(()=>{
-  if(search.value)
-    return fillterBlogs.value.filter((item:any)=>{
+const searchBlogs = computed(() => {
+  if (search.value)
+    return fillterBlogs.value.filter((item: any) => {
       return item.title.includes(search.value);
-    })
-  return fillterBlogs.value;  
+    });
+  return fillterBlogs.value;
 });
 const currentBlogs = computed(() => {
   return searchBlogs.value.slice(0, itemPerPage.value * pageNumber.value);
@@ -298,21 +318,31 @@ if (error.value) {
   }
 }
 
-function goToAddBlog(){
-  window.location.href = '/addBlog';
+function goToAddBlog() {
+  window.location.href = "/addBlog";
 }
 useHead({
-  title:'مقالات - ' + categoryInfo.value.name,
+  title: "مقالات - " + categoryInfo.value.name,
   meta: [
-    { name: "description", content: 'تحتوي هذه الصفحة على أهم المقالات المتعلقة بتصنيف ' + categoryInfo.value.name },
-    { property: "og:description", content: 'تحتوي هذه الصفحة على أهم المقالات المتعلقة بتصنيف ' + categoryInfo.value.name  },
-    { property: "og:image", content: '/images/مقالات.png' },
+    {
+      name: "description",
+      content:
+        "تحتوي هذه الصفحة على أهم المقالات المتعلقة بتصنيف " +
+        categoryInfo.value.name,
+    },
+    {
+      property: "og:description",
+      content:
+        "تحتوي هذه الصفحة على أهم المقالات المتعلقة بتصنيف " +
+        categoryInfo.value.name,
+    },
+    { property: "og:image", content: "/images/مقالات.png" },
     { name: "twitter:card", content: "summay_large_image" },
-    { property:'og:locale',content:'ar_ar'},
-    { property:'og:url',content:'https://alqanouni.com/'},
-    { property:'og:type',content:'website'}
+    { property: "og:locale", content: "ar_ar" },
+    { property: "og:url", content: "https://alqanouni.com/" },
+    { property: "og:type", content: "website" },
   ],
-  link:[{rel:'canonical',href:'https://alqanouni.com/'}],
+  link: [{ rel: "canonical", href: "https://alqanouni.com/" }],
 });
 </script>
     

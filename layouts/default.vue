@@ -28,7 +28,7 @@
         <p class="text-h5 my-4 font-weight-bold" style="color: #d0b556">
           حول الموقع
         </p>
-        
+
         <div
           class="d-md-flex justify-space-between align-center w-75"
           style="color: white"
@@ -38,10 +38,20 @@
             class="px-2 my-3 font-weight-medium"
           >
             <div class="">
-              <nuxt-link style="color: white" class="pointer text-h6" to="/AboutSite">عن الموقع</nuxt-link>
+              <nuxt-link
+                style="color: white"
+                class="pointer text-h6"
+                to="/AboutSite"
+                >عن الموقع</nuxt-link
+              >
             </div>
             <div class="">
-              <nuxt-link style="color: white" class="pointer text-h6" to="/staff">طاقم الموقع</nuxt-link>
+              <nuxt-link
+                style="color: white"
+                class="pointer text-h6"
+                to="/staff"
+                >طاقم الموقع</nuxt-link
+              >
             </div>
           </div>
           <div
@@ -49,12 +59,18 @@
             class="px-2 my-3 font-weight-medium"
           >
             <div class="">
-              <nuxt-link style="color: white" class="pointer text-h6" to="/usage"
+              <nuxt-link
+                style="color: white"
+                class="pointer text-h6"
+                to="/usage"
                 >إتفاقية الإستخدام وسياسة الخصوصية</nuxt-link
               >
             </div>
             <div class="">
-              <nuxt-link style="color: white" class="pointer text-h6" to=""
+              <nuxt-link
+                style="color: white"
+                class="pointer text-h6"
+                to="/contact"
                 >تواصل معنا - دعم فني</nuxt-link
               >
             </div>
@@ -64,19 +80,24 @@
             class="px-2 my-3 font-weight-medium"
           >
             <div class="">
-              <nuxt-link style="color: white" class="pointer text-h6" to="/questions"
+              <nuxt-link
+                style="color: white"
+                class="pointer text-h6"
+                to="/questions"
                 >الأسئلة المتكررة</nuxt-link
               >
             </div>
             <div class="">
-              <nuxt-link style="color: white" class="pointer text-h6" to="">الشركاء</nuxt-link>
+              <nuxt-link style="color: white" class="pointer text-h6" to=""
+                >الشركاء</nuxt-link
+              >
             </div>
           </div>
           <div class="px-2 my-3 font-weight-medium text-center">
             <p class="font-weight-bold text-h5">تابعنا:</p>
             <div>
               <a
-                style="color: white"
+                style="color: skyblue"
                 href="https://www.facebook.com/AlqanouniMaroc"
                 target="_blank"
                 class="mx-1 facebook pointer"
@@ -85,7 +106,7 @@
                 <v-icon icon="mdi-facebook"></v-icon>
               </a>
               <a
-                style="color: white"
+                style="color: red"
                 href="https://www.youtube.com/@ABDELHAKTALIB"
                 target="_blank"
                 class="mx-1 youtube pointer"
@@ -124,7 +145,7 @@ useHead({
       type: "text/css",
       href: "https://fonts.gstatic.com",
     },
-    
+
     {
       rel: "stylesheet",
       type: "text/css",
@@ -141,8 +162,8 @@ useHead({
 onMounted(() => {
   const interval = setInterval(() => {
     if (process.client) {
-      var pusher = new Pusher("cd9ce3c8c8ce79dd100e", {
-        cluster: "ap2",
+      var pusher = new Pusher("3f11ae38768814455195", {
+        cluster: "eu",
         // appId: "1473088",
         // secret: "90470554fb9a1e81cdc5",
         // authEndpoint: "/api/pusher", // endpoint to authenticate user
@@ -281,7 +302,9 @@ onMounted(() => {
           //   settingsStore.addNewNotification(data.data);
           // });
 
-          var competitionPrizes = pusher.subscribe("competition-prizes." + authStore.token.user_id);
+          var competitionPrizes = pusher.subscribe(
+            "competition-prizes." + authStore.token.user_id
+          );
           competitionPrizes.bind("competition-prizes", (data) => {
             let dataJson = JSON.parse(data.data.data);
             settingsStore.setToastMessage(dataJson.message);
