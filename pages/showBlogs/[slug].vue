@@ -96,6 +96,7 @@
               <div>
                 <h6 class="text-h5 d-flex justify-center ">
                   <p
+                  class="text-center"
                     style="
                       display: -webkit-box;
                       -webkit-line-clamp: 2;

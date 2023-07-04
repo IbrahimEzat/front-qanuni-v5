@@ -94,7 +94,7 @@
             <v-col sm="10" cols="12">
               <h6 class="d-flex justify-center">
                 <p
-                  class="text-h5"
+                  class="text-h5 text-center"
                   style="
                     display: -webkit-box;
                     -webkit-line-clamp: 2;
