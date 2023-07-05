@@ -309,6 +309,31 @@ function tryGoToAddSurvey() {
   if (authStore.isLogin) return navigateTo("/surveys/add");
   dialog.value = true;
 }
+
+
+useHead({
+  title: "استطلاعات - " + categoryInfo.value.name,
+  meta: [
+    {
+      name: "description",
+      content:
+        "تحتوي هذه الصفحة على أهم الاستطلاعات المتعلقة بتصنيف " +
+        categoryInfo.value.name,
+    },
+    {
+      property: "og:description",
+      content:
+        "تحتوي هذه الصفحة على أهم الاستطلاعات المتعلقة بتصنيف " +
+        categoryInfo.value.name,
+    },
+    { property: "og:image", content: "/images/استطلاعات.png" },
+    { name: "twitter:card", content: "summay_large_image" },
+    { property: "og:locale", content: "ar_ar" },
+    { property: "og:url", content: "https://alqanoni.com/" },
+    { property: "og:type", content: "website" },
+  ],
+  link: [{ rel: "canonical", href: "https://alqanoni.com/" }],
+});
 </script>
         
 <style scoped>

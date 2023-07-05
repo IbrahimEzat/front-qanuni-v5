@@ -137,10 +137,10 @@ function goToSearch(){
     { property: "og:image", content: '/images/المكتبة.png' },
     { name: "twitter:card", content: "summay_large_image" },
     { property:'og:locale',content:'ar_ar'},
-    { property:'og:url',content:'https://alqanouni.com/'},
+    { property:'og:url',content:'https://alqanoni.com/'},
     { property:'og:type',content:'website'}
   ],
-  link:[{rel:'canonical',href:'https://alqanouni.com/'}],
+  link:[{rel:'canonical',href:'https://alqanoni.com/'}],
 });
 </script>
         
