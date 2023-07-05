@@ -343,7 +343,7 @@
                       <nuxt-link to="" class="d-flex justify-center py-4">
                         <a
                           style="color: blue"
-                          href="https://www.facebook.com/AlqanouniMaroc"
+                          href="https://www.facebook.com/AlqanoniMaroc"
                           target="_blank"
                           class="facebook pointer"
                           variant="text"

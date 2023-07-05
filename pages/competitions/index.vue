@@ -5,36 +5,68 @@
         <bannar-slide></bannar-slide>
       </v-col>
       <v-col md="8" cols="12" class="bg-white my-8 pa-5">
-        <div style="background-color: #fdf8ef; " class="mx-3 pa-3 d-flex justify-space-between">
+        <div
+          style="background-color: #fdf8ef"
+          class="mx-3 pa-3 d-flex justify-space-between"
+        >
           <span class="font-weight-bold pt-2">مسابقات/تصنيفات</span>
           <p class="font-weight-bold mt-3">
             يحتوي على :
             <span style="color: red"> {{ competitionNumber }} مسابقات</span>
           </p>
-          <v-text-field clearable style="max-width: 250px; min-width: 150px; max-height: 40px" class="rounded-pill mt-1"
-            label="ابحث" density="compact" v-model="search" @keyup.enter.prevent="goToSearch"
-            prepend-inner-icon="mdi-magnify" variant="outlined"></v-text-field>
-
+          <v-text-field
+            clearable
+            style="max-width: 250px; min-width: 150px; max-height: 40px"
+            class="rounded-pill mt-1"
+            label="ابحث"
+            density="compact"
+            v-model="search"
+            @keyup.enter.prevent="goToSearch"
+            prepend-inner-icon="mdi-magnify"
+            variant="outlined"
+          ></v-text-field>
         </div>
 
         <bannar-center></bannar-center>
         <div class="ma-3 pa-5">
-          <v-row>
+          <div class="d-flex  flex-wrap align-center">
+            <div
+              v-for="category in categories"
+              :key="category.id"
+              v-show="category.competitions_count != 0"
+            >
+              <v-sheet
+                @click="$router.push('/competitions/' + category.slug)"
+                :color="category.background"
+                style="position: relative; max-width: 230px"
+                class="text-center mb-3 me-3 pa-3 rounded-lg text-h6 pointer"
+                :style="{ color: category.color + '' }"
+                ><p>{{ category.name }}</p>
+                <v-badge
+                  color="red"
+                  :content="category.competitions_count"
+                  style="position: absolute; top: 0; right: 0"
+                ></v-badge>
+              </v-sheet>
+            </div>
+          </div>
+          <!-- <v-row>
             <v-col v-show="category.competitions_count != 0" sm="4" md="3" cols="6" v-for="(category) in categories"
               :key="category.id">
               <v-sheet @click="$router.push('/competitions/' + category.slug)" :color="category.background"
                 class="text-center pa-3 rounded-pill text-h6 pointer" :style="{ color: category.color + '' }">{{
                   category.name }}({{ category.competitions_count }}) </v-sheet>
             </v-col>
-          </v-row>
-          <v-alert v-if="competitionNumber == 0" type="info">لا يوجد تصنيفات فالموقع</v-alert>
+          </v-row> -->
+          <v-alert v-if="competitionNumber == 0" type="info"
+            >لا يوجد تصنيفات فالموقع</v-alert
+          >
         </div>
       </v-col>
       <v-col md="2" sm="0">
         <bannar-slide></bannar-slide>
       </v-col>
     </v-row>
-    
   </div>
 </template>
         
@@ -58,29 +90,38 @@ if (error.value) {
     setToastMessage(msg);
   }
 }
-const { data: countData, error: errorCount } = await useSendRequest('/competitions/count', {});
+const { data: countData, error: errorCount } = await useSendRequest(
+  "/competitions/count",
+  {}
+);
 
 if (!errorCount.value && countData.value?.status)
   competitionNumber.value = countData.value.data;
 
 function goToSearch() {
   if (search.value) {
-    return navigateTo('/competitions/search/' + search.value);
+    return navigateTo("/competitions/search/" + search.value);
   }
 }
 
 useHead({
-  title: 'القانوني - تصنيفات|مسابقات',
+  title: "القانوني - تصنيفات|مسابقات",
   meta: [
-    { name: "description", content: 'تحتوي هذه الصفحة على التصنيفات الخاصة بأهم المسابقات' },
-    { property: "og:description", content: 'تحتوي هذه الصفحة على التصنيفات الخاصة بأهم المسابقات' },
-    { property: "og:image", content: '/images/مسابقات.png' },
+    {
+      name: "description",
+      content: "تحتوي هذه الصفحة على التصنيفات الخاصة بأهم المسابقات",
+    },
+    {
+      property: "og:description",
+      content: "تحتوي هذه الصفحة على التصنيفات الخاصة بأهم المسابقات",
+    },
+    { property: "og:image", content: "/images/مسابقات.png" },
     { name: "twitter:card", content: "summay_large_image" },
-    { property: 'og:locale', content: 'ar_ar' },
-    { property: 'og:url', content: 'https://alqanouni.com/' },
-    { property: 'og:type', content: 'website' }
+    { property: "og:locale", content: "ar_ar" },
+    { property: "og:url", content: "https://alqanouni.com/" },
+    { property: "og:type", content: "website" },
   ],
-  link: [{ rel: 'canonical', href: 'https://alqanouni.com/' }],
+  link: [{ rel: "canonical", href: "https://alqanouni.com/" }],
 });
 </script>
         

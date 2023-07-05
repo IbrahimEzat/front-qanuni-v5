@@ -98,7 +98,7 @@
             <div>
               <a
                 style="color: skyblue"
-                href="https://www.facebook.com/AlqanouniMaroc"
+                href="https://www.facebook.com/AlqanoniMaroc"
                 target="_blank"
                 class="mx-1 facebook pointer"
                 variant="text"
@@ -156,6 +156,11 @@ useHead({
     {
       src: "https://js.pusher.com/8.0.1/pusher.min.js",
     },
+    {
+      async:'true',
+      src:'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5311138885125997',
+      crossorigin:"anonymous"
+    }
   ],
 });
 
@@ -333,5 +338,14 @@ onMounted(() => {
 
 .youtube:hover {
   color: red;
+}
+.content .ql-align-center{
+  text-align: center !important;
+}
+.content .ql-align-left{
+  text-align: left !important;
+}
+.content .ql-align-right{
+  text-align: right !important;
 }
 </style>

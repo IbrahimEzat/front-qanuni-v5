@@ -85,7 +85,6 @@
               </thead>
               <tbody>
                 <tr
-                  v-show="item.type != 'admin'"
                   v-for="(item, index) in currentShown"
                   :key="item"
                 >

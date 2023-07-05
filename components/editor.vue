@@ -92,7 +92,7 @@ function initEditor() {
       },
     },
   });
-  quill.format("align", "right");
+  // quill.format("align", "right");
   return quill;
 }
 onMounted(() => {

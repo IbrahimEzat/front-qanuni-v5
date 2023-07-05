@@ -1,6 +1,6 @@
 <template>
   <div class="bg-blue-grey-lighten-5">
-    <v-row style="min-height: 100vh;">
+    <v-row style="min-height: 100vh;" class="">
       <v-col md="2" sm="0">
         <bannar-slide></bannar-slide>
       </v-col>
@@ -44,25 +44,24 @@
         </v-row>
         <bannar-center></bannar-center>
         <div class="ma-3 pa-5">
-          <v-row>
-            <v-col
-              sm="4"
-              md="3"
-              cols="6"
+          <div class="d-flex flex-wrap align-center">
+            <div
+             
               v-for="(category) in categories"
               :key="category.id"
               v-show="category.libraries_count != 0"
             >
               <v-sheet
-              
+
                 @click="$router.push('/library/' + category.slug)"
                 :color="category.background"
-                class="text-center pa-3 rounded-pill text-h6 pointer"
+                style="position: relative;max-width: 230px;"
+                class="text-center mb-3 me-3 pa-3 rounded-lg text-h6 pointer"
                 :style="{ color: category.color + '' }"
-                >{{ category.name }} ({{ category.libraries_count }})</v-sheet
+                ><p>{{ category.name }}</p> <v-badge color="red" :content="category.libraries_count" style="position:absolute;top: 0;right: 0;"></v-badge> </v-sheet
               >
-            </v-col>
-          </v-row>
+            </div>
+          </div>
           <v-alert v-if="filesNumber == 0" type="info"
             >لا يوجد ملفات فالموقع</v-alert
           >

@@ -121,11 +121,7 @@ definePageMeta({
 
 useHead({
   link: [
-    {
-      rel: "stylesheet",
-      type: "text/css",
-      href: "https://cdn.quilljs.com/1.3.6/quill.snow.css",
-    },
+    
     {
       rel: "stylesheet",
       type: "text/css",

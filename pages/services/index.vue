@@ -1,6 +1,6 @@
 <template>
   <div class="bg-blue-grey-lighten-5">
-    <v-row style="min-height: 100vh;">
+    <v-row style="min-height: 100vh">
       <v-col md="2" sm="0">
         <bannar-slide :banner="rightBanner"></bannar-slide>
       </v-col>
@@ -118,17 +118,20 @@ function removeFromWishlist() {
 }
 
 useHead({
-  title:'القانوني - خدمات',
+  title: "القانوني - خدمات",
   meta: [
-    { name: "description", content: 'هذه أهم الخدمات التي يقدمها الموقع' },
-    { property: "og:description", content: 'هذه أهم الخدمات التي يقدمها الموقع' },
-    { property: "og:image", content: '/images/market.png' },
+    { name: "description", content: "هذه أهم الخدمات التي يقدمها الموقع" },
+    {
+      property: "og:description",
+      content: "هذه أهم الخدمات التي يقدمها الموقع",
+    },
+    { property: "og:image", content: "/images/market.png" },
     { name: "twitter:card", content: "summay_large_image" },
-    { property:'og:locale',content:'ar_ar'},
-    { property:'og:url',content:'https://alqanouni.com/'},
-    { property:'og:type',content:'website'}
+    { property: "og:locale", content: "ar_ar" },
+    { property: "og:url", content: "https://alqanouni.com/" },
+    { property: "og:type", content: "website" },
   ],
-  link:[{rel:'canonical',href:'https://alqanouni.com/'}],
+  link: [{ rel: "canonical", href: "https://alqanouni.com/" }],
 });
 </script>
       

@@ -423,4 +423,13 @@ const settingsStore = useSettingsStore();
 a {
   text-decoration: none;
 }
+.content .ql-align-center{
+  text-align: center !important;
+}
+.content .ql-align-left{
+  text-align: left !important;
+}
+.content .ql-align-right{
+  text-align: right !important;
+}
 </style>
