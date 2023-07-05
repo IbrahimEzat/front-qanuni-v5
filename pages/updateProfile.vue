@@ -235,11 +235,12 @@
       </v-col>
     </v-row>
     <v-dialog v-model="dialog" transition="dialog-top-transition" width="auto">
-      <v-card elevation="4" class="text-center" max-width="300">
+      <v-card elevation="4" class="text-center" max-width="340">
         <v-card-text class="text-h6">
           
           <div v-if="!authStore.isAdmin">
-            <v-card-title class="text-error text-h4">انتبه سيتم خصم 500 نقطة لتتمكن من إضافة نبذة تعريفية</v-card-title>
+            <v-card-title class="text-error text-h4">انتبه</v-card-title>
+            <p>سيتم خصم 500 نقطة لتتمكن من إضافة نبذة تعريفية</p>
           </div>
           <div v-else>
             تأكيد إضافة نبذة تعرفية لك
