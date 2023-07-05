@@ -2,7 +2,7 @@
   <div class="bg-blue-grey-lighten-5">
     <v-row class="">
       <v-col md="2" sm="0">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
       <v-col md="8" cols="12" class="bg-white my-8 pa-5">
         <div style="background-color: #fdf8ef; width: 100%" class="pa-3">
@@ -96,7 +96,7 @@
         </div>
       </v-col>
       <v-col md="2" sm="0">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
     </v-row>
     <v-dialog v-model="dialog" transition="dialog-top-transition" width="auto">

@@ -24,7 +24,7 @@
         </template>
       </v-snackbar>
       <slot class="" />
-      <v-footer class="pa-5 d-block" style="background-color: #060829">
+      <v-footer class="pa-5 d-block" style="background-color: #060829;">
         <p class="text-h5 my-4 font-weight-bold" style="color: #d0b556">
           حول الموقع
         </p>

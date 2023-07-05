@@ -8,7 +8,7 @@
   >
     <v-row class="mx-1">
       <v-col md="2" sm="0">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
       <v-col
         style="border: 1px solid #999"
@@ -214,12 +214,12 @@
           >لا يوجد مقالات لعرضها</v-alert
         >
         <div class="d-md-none d-block">
-          <!-- <bannar-center></bannar-center> -->
+          <bannar-center></bannar-center>
           <!-- <bannar-center></bannar-center> -->
         </div>
       </v-col>
       <v-col md="2" sm="0">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
     </v-row>
   </v-card>

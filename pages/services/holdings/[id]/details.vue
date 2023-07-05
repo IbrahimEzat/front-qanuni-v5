@@ -2,7 +2,7 @@
   <div class="bg-blue-grey-lighten-5">
     <v-row class="" style="min-height: 100vh;">
       <v-col md="2" sm="0">
-        <bannar-slide :banner="rightBanner"></bannar-slide>
+        <!-- <bannar-slide :banner="rightBanner"></bannar-slide> -->
       </v-col>
       <v-col md="8" cols="12" class="bg-white mt-8 mb-10 pa-5">
         <div style="background-color: #fdf8ef; width: 100%" class="pa-3 d-flex justify-space-between">
@@ -140,7 +140,7 @@
       </v-col>
 
       <v-col md="2" sm="0">
-        <bannar-slide :banner="leftBanner"></bannar-slide>
+        <!-- <bannar-slide :banner="leftBanner"></bannar-slide> -->
       </v-col>
     </v-row>
   </div>

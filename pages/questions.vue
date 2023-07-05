@@ -2,7 +2,7 @@
   <div class="bg-blue-grey-lighten-5">
     <v-row style="min-height: 800px">
       <v-col cols="2" class="ma-0">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
       <v-col
         class="bg-white mt-sm-8 my-8 pa-0 mx-auto"
@@ -18,7 +18,7 @@
         <div v-html="content" class="content ma-5"></div>
       </v-col>
       <v-col cols="2">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
     </v-row>
   </div>

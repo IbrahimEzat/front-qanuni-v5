@@ -2,7 +2,7 @@
   <div v-if="surveyInfo" style="min-height: 100vh" class="bg-blue-grey-lighten-5">
     <v-row>
       <v-col cols="2" class="ma-0">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
       <v-col class="bg-white mt-sm-8 my-8 pa-0 mx-auto pb-10" md="8" sm="11" cols="11">
         <div style="background-color: #fdf8ef; width: 100%" class="d-flex justify-space-between px-3">
@@ -101,7 +101,7 @@
         </div>
       </v-col>
       <v-col cols="2">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
     </v-row>
   </div>

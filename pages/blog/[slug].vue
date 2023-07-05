@@ -7,7 +7,7 @@
   >
     <v-row>
       <v-col cols="2" class="ma-0">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
       <v-col
         style="border: 1px solid #999"
@@ -361,7 +361,7 @@
         <!-- end comment -->
       </v-col>
       <v-col cols="2">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
     </v-row>
     <v-dialog v-model="dialog" transition="dialog-top-transition" width="auto">

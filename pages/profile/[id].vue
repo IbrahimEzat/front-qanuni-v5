@@ -7,7 +7,7 @@
   >
     <v-row>
       <v-col cols="2" class="ma-0">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
       <v-col
         class="bg-white my-sm-8 my-8 pa-0 mx-auto pb-10"
@@ -247,7 +247,7 @@
         </div>
       </v-col>
       <v-col cols="2">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
     </v-row>
   </div>

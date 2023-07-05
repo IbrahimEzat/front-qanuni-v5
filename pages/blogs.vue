@@ -2,7 +2,7 @@
   <div style="min-height: 100vh" class="bg-blue-grey-lighten-5">
     <v-row class="">
       <v-col md="2" sm="0">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
       <v-col
         style="border: 1px solid #999"
@@ -98,7 +98,7 @@
         </div>
       </v-col>
       <v-col md="2" sm="0">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
     </v-row>
     <v-dialog v-model="dialog" transition="dialog-top-transition" width="auto">

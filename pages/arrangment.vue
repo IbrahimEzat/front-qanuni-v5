@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col lg="2" class="d-lg-block d-none">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
       <v-col lg="8" cols="12">
         <v-container>
@@ -37,7 +37,7 @@
         </v-container>
       </v-col>
       <v-col lg="2" class="d-lg-block d-none">
-        <bannar-slide></bannar-slide>
+        <!-- <bannar-slide></bannar-slide> -->
       </v-col>
     </v-row>
   </div>

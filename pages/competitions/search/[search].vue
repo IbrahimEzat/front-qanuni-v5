@@ -2,7 +2,7 @@
     <v-card v-if="competitions" min-height="100vh" color="#f4f4f4" class="">
         <v-row class="mx-1">
             <v-col md="2" sm="0">
-                <bannar-slide></bannar-slide>
+                <!-- <bannar-slide></bannar-slide> -->
             </v-col>
             <v-col style="border: 1px solid #999" class="bg-white mb-5 mt-sm-8 pa-0 pb-16" md="8" sm="11" cols="12">
                 <div style="background-color: #fdf8ef; width: 100%" class="pa-3">
@@ -132,12 +132,12 @@
 
                 <v-alert class="ma-3" type="info" v-if="fillterCompetition.length === 0">لا يوجد مسابقات لعرضها</v-alert>
                 <div class="d-md-none d-block">
-                    <bannar-center></bannar-center>
-                    <bannar-center></bannar-center>
+                    <!-- <bannar-center></bannar-center>
+                    <bannar-center></bannar-center> -->
                 </div>
             </v-col>
             <v-col md="2" sm="0">
-                <bannar-slide></bannar-slide>
+                <!-- <bannar-slide></bannar-slide> -->
             </v-col>
         </v-row>
 

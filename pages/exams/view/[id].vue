@@ -4,7 +4,7 @@
       <v-card min-height="100vh" color="#f4f4f4" class="">
         <v-row class="mx-1">
           <v-col md="2" sm="0">
-            <bannar-slide></bannar-slide>
+            <!-- <bannar-slide></bannar-slide> -->
           </v-col>
           <v-col
             style="border: 1px solid #999"
@@ -245,7 +245,7 @@
             </div>
           </v-col>
           <v-col md="2" sm="0">
-            <bannar-slide></bannar-slide>
+            <!-- <bannar-slide></bannar-slide> -->
           </v-col>
         </v-row>
       </v-card>
