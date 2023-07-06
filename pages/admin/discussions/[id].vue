@@ -20,7 +20,9 @@
         </div>
         <div>
           <p class="text-h6">المناقشة</p>
-          <div id="editor" class="content"></div>
+          <div id="summernote"></div>
+
+          <!-- <div id="editor" class="content"></div> -->
           <div
             style="font-size: 15px"
             class="text-black mb-10 font-weight-medium d-flex justify-space-between"
@@ -77,20 +79,47 @@ import { useAuthStore } from "~/stores/useAuthStore";
 import { useSettingsStore } from "~/stores/useSettings";
 import { responseReturn } from "~/types/tpes";
 
+// useHead({
+//   link: [
+//     {
+//       rel: "stylesheet",
+//       type: "text/css",
+//       href: "https://cdn.quilljs.com/1.3.6/quill.snow.css",
+//     },
+//   ],
+//   script: [
+//     {
+//       src: "https://cdn.quilljs.com/1.3.6/quill.js",
+//     },
+//   ],
+// });
 useHead({
   link: [
     {
       rel: "stylesheet",
       type: "text/css",
-      href: "https://cdn.quilljs.com/1.3.6/quill.snow.css",
+      href: "https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css",
+    },
+    {
+      rel: "stylesheet",
+      type: "text/css",
+      href: "https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css",
     },
   ],
   script: [
+ 
     {
-      src: "https://cdn.quilljs.com/1.3.6/quill.js",
+      src: "https://code.jquery.com/jquery-3.5.1.min.js",
+    },
+    {
+      src: "https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js",
+    },
+    {
+      src: "https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js",
     },
   ],
 });
+
 definePageMeta({
   middleware: ["auth", "is-admin"],
   layout: "dashboard",
@@ -268,7 +297,17 @@ function initEditor() {
   }, 100);
 }
 onMounted(() => {
-  initEditor();
+  // initEditor();
+  $(document).ready(function () {
+    $("#summernote").summernote();
+  });
+  let interval = setInterval(() => {
+    const noteDom = document.getElementsByClassName("note-editable")[0];
+    if (noteDom) {
+      noteDom.innerHTML = discussionInfo.value.content;
+      clearInterval(interval);
+    }
+  }, 200);
 });
 </script>
 <style scoped>
