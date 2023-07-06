@@ -74,7 +74,6 @@
 </template>
       
 <script setup lang="ts">
-import { Value } from "sass";
 import { useAuthStore } from "~/stores/useAuthStore";
 import { useSettingsStore } from "~/stores/useSettings";
 import { responseReturn } from "~/types/tpes";
@@ -132,9 +131,9 @@ const categorySelect = ref();
 const categories = ref();
 
 const wordCount = ref(0);
-const readyToChange = computed(() => {
-  return wordCount.value >= 1 && title.value.length > 0;
-});
+// const readyToChange = computed(() => {
+//   return wordCount.value >= 1 && title.value.length > 0;
+// });
 const changeButtonLoading = ref(false);
 const acceptButtonLoading = ref(false);
 

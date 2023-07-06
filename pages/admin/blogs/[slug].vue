@@ -83,18 +83,13 @@
 </template>
     
   <script setup lang="ts">
-import { Value } from "sass";
 import { useAuthStore } from "~/stores/useAuthStore";
 import { useSettingsStore } from "~/stores/useSettings";
 import { responseReturn } from "~/types/tpes";
 
 useHead({
   link: [
-    {
-      rel: "stylesheet",
-      type: "text/css",
-      href: "https://cdn.quilljs.com/1.3.6/quill.snow.css",
-    },
+    
     {
       rel: "stylesheet",
       type: "text/css",
@@ -107,9 +102,7 @@ useHead({
     },
   ],
   script: [
-    {
-      src: "https://cdn.quilljs.com/1.3.6/quill.js",
-    },
+    
     {
       src: "https://code.jquery.com/jquery-3.5.1.min.js",
     },
