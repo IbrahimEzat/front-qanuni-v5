@@ -58,7 +58,6 @@
 
         <div style="text-align: end">
           <v-btn
-            :disabled="!readyToChange"
             :loading="changeButtonLoading"
             variant="outlined"
             class="rounded-pill mt-3"
