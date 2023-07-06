@@ -3,7 +3,7 @@ export const useSettingsStore = defineStore('useSettingsStore', {
         return {
             toastMessage: '',
             isToastFound: false,
-            domain: 'https://alqanouni.com/api',
+            domain: 'http://127.0.0.1:8000/api',
             // notificationMessages:[] as any[],
             realTimeNotification: [] as any[],
             notificationMessages: new Map(),
