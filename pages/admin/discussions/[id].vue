@@ -105,7 +105,6 @@ useHead({
     },
   ],
   script: [
- 
     {
       src: "https://code.jquery.com/jquery-3.5.1.min.js",
     },
@@ -175,39 +174,29 @@ if (error.value) {
   navigateTo("/");
 }
 
-(async () => {
-  const { data, error } = await useSendRequest<responseReturn>(
-    "/categories",
-    {}
-  );
-  if (error.value) {
-    setToastMessage(error.value.message);
-    return;
-  }
-  if (data.value?.status) {
-    categories.value = data.value.data;
-  }
+const { data:data2, error:error2 } = await useSendRequest<responseReturn>("/categories", {});
+if (error2.value) {
+  setToastMessage(error2.value.message);
+} else if (data2.value?.status) {
+  categories.value = data2.value.data;
+}
 
-  const { data: selected, error: errorSelected } =
-    await useSendRequest<responseReturn>("/discussions/getCategories", {
-      discussion_id: discussionInfo.value.id,
-    });
-  if (errorSelected.value) {
-    setToastMessage(errorSelected.value.message);
-    return;
-  }
-  if (selected.value?.status) {
-    categorySelect.value = selected.value.data;
-  }
-  //set initial content in editor after get content from database
-})();
+const { data: selected, error: errorSelected } =
+  await useSendRequest<responseReturn>("/discussions/getCategories", {
+    discussion_id: discussionInfo.value.id,
+  });
+if (errorSelected.value) {
+  setToastMessage(errorSelected.value.message);
+} else if (selected.value?.status) {
+  categorySelect.value = selected.value.data;
+}
+//set initial content in editor after get content from database
 
 async function updateDiscussion() {
   changeButtonLoading.value = true;
   // let content = document.getElementById("editor")
   //   ?.firstChild as HTMLInputElement;
   let content = document.getElementsByClassName("note-editable")[0].innerHTML;
-
 
   const { data, error } = await useSendRequest<responseReturn>(
     "/admin/discussions/update",
@@ -298,6 +287,10 @@ async function updateDiscussion() {
 // }
 onMounted(() => {
   // initEditor();
+  // document.addEventListener("loadeddata", function () {
+  //   var summernote = document.getElementById("summernote");
+  //   summernote.summernote();
+  // });
   $(document).ready(function () {
     $("#summernote").summernote();
   });
