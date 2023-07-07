@@ -57,7 +57,7 @@
             <input v-model="checkbox" type="checkbox" name="" id="check" />
             <label for="check" class="mr-2 font-weight-bold"
               >اوافق على <span style="color: red">الشروط والاحكام</span> بخصوص
-              النشر في الموضوع</label
+              النشر بمنصة القانوني</label
             >
           </div>
           <div style="text-align: end">
