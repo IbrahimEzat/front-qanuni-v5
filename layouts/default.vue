@@ -1,25 +1,13 @@
 <template>
   <div>
     <nav-bar>
-      <v-snackbar
-        color="info"
-        style="direction: rtl"
-        location="top end"
-        v-model="settingsStore.isToastFound"
-      >
+      <v-snackbar color="info" style="direction: rtl" location="top end" v-model="settingsStore.isToastFound">
         <span>{{ settingsStore.toastMessage }}</span>
         <template v-slot:actions>
-          <v-btn
-            icon="mdi-close"
-            size="small"
-            color="black"
-            variant="flat"
-            @click="
-              () => {
-                settingsStore.clearToastMessage();
-              }
-            "
-          >
+          <v-btn icon="mdi-close" size="small" color="black" variant="flat" @click="() => {
+              settingsStore.clearToastMessage();
+            }
+            ">
           </v-btn>
         </template>
       </v-snackbar>
@@ -29,89 +17,41 @@
           حول الموقع
         </p>
 
-        <div
-          class="d-md-flex justify-space-between align-center w-75"
-          style="color: white"
-        >
-          <div
-            style="border-right: 3px solid #d0b556"
-            class="px-2 my-3 font-weight-medium"
-          >
+        <div class="d-md-flex justify-space-between align-center w-75" style="color: white">
+          <div style="border-right: 3px solid #d0b556" class="px-2 my-3 font-weight-medium">
             <div class="">
-              <nuxt-link
-                style="color: white"
-                class="pointer text-h6"
-                to="/AboutSite"
-                >عن الموقع</nuxt-link
-              >
+              <nuxt-link style="color: white" class="pointer text-h6" to="/AboutSite">عن الموقع</nuxt-link>
             </div>
             <div class="">
-              <nuxt-link
-                style="color: white"
-                class="pointer text-h6"
-                to="/staff"
-                >طاقم الموقع</nuxt-link
-              >
+              <nuxt-link style="color: white" class="pointer text-h6" to="/staff">طاقم الموقع</nuxt-link>
             </div>
           </div>
-          <div
-            style="border-right: 3px solid #d0b556"
-            class="px-2 my-3 font-weight-medium"
-          >
+          <div style="border-right: 3px solid #d0b556" class="px-2 my-3 font-weight-medium">
             <div class="">
-              <nuxt-link
-                style="color: white"
-                class="pointer text-h6"
-                to="/usage"
-                >إتفاقية الإستخدام وسياسة الخصوصية</nuxt-link
-              >
+              <nuxt-link style="color: white" class="pointer text-h6" to="/usage">إتفاقية الإستخدام وسياسة
+                الخصوصية</nuxt-link>
             </div>
             <div class="">
-              <nuxt-link
-                style="color: white"
-                class="pointer text-h6"
-                to="/contact"
-                >تواصل معنا - دعم فني</nuxt-link
-              >
+              <nuxt-link style="color: white" class="pointer text-h6" to="/contact">تواصل معنا - دعم فني</nuxt-link>
             </div>
           </div>
-          <div
-            style="border-right: 3px solid #d0b556"
-            class="px-2 my-3 font-weight-medium"
-          >
+          <div style="border-right: 3px solid #d0b556" class="px-2 my-3 font-weight-medium">
             <div class="">
-              <nuxt-link
-                style="color: white"
-                class="pointer text-h6"
-                to="/questions"
-                >الأسئلة المتكررة</nuxt-link
-              >
+              <nuxt-link style="color: white" class="pointer text-h6" to="/questions">الأسئلة المتكررة</nuxt-link>
             </div>
             <div class="">
-              <nuxt-link style="color: white" class="pointer text-h6" to=""
-                >الشركاء</nuxt-link
-              >
+              <nuxt-link style="color: white" class="pointer text-h6" to="">الشركاء</nuxt-link>
             </div>
           </div>
           <div class="px-2 my-3 font-weight-medium text-center">
             <p class="font-weight-bold text-h5">تابعنا:</p>
             <div>
-              <a
-                style="color: skyblue"
-                href="https://www.facebook.com/AlqanoniMaroc"
-                target="_blank"
-                class="mx-1 facebook pointer"
-                variant="text"
-              >
+              <a style="color: skyblue" href="https://www.facebook.com/AlqanoniMaroc" target="_blank"
+                class="mx-1 facebook pointer" variant="text">
                 <v-icon icon="mdi-facebook"></v-icon>
               </a>
-              <a
-                style="color: red"
-                href="https://www.youtube.com/@ABDELHAKTALIB"
-                target="_blank"
-                class="mx-1 youtube pointer"
-                variant="text"
-              >
+              <a style="color: red" href="https://www.youtube.com/@ABDELHAKTALIB" target="_blank"
+                class="mx-1 youtube pointer" variant="text">
                 <v-icon icon="mdi-youtube"></v-icon>
               </a>
             </div>
@@ -157,16 +97,26 @@ useHead({
       src: "https://js.pusher.com/8.0.1/pusher.min.js",
     },
     {
-      async:'true',
-      src:'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5311138885125997',
-      crossorigin:"anonymous"
-    }
+      async: 'true',
+      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5311138885125997',
+      crossorigin: "anonymous"
+    },
+    {
+      async: 'true',
+      src: "https://www.googletagmanager.com/gtag/js?id=G-3TMH9734JC",
+    },
   ],
 });
 
 onMounted(() => {
   const interval = setInterval(() => {
     if (process.client) {
+      
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-3TMH9734JC');
+
       var pusher = new Pusher("3f11ae38768814455195", {
         cluster: "eu",
         // appId: "1473088",
@@ -339,13 +289,16 @@ onMounted(() => {
 .youtube:hover {
   color: red;
 }
-.content .ql-align-center{
+
+.content .ql-align-center {
   text-align: center !important;
 }
-.content .ql-align-left{
+
+.content .ql-align-left {
   text-align: left !important;
 }
-.content .ql-align-right{
+
+.content .ql-align-right {
   text-align: right !important;
 }
 </style>
