@@ -33,7 +33,7 @@
       <div class="text-center">
         <div class="d-flex justify-center">
           <v-img style="max-width: 40px;" src="images/قائمة-المفضلة-قبل-الضغط.png"></v-img>
-          <p class="text-sm-h4 text-h5 ms-2">ما الذي يميز منصة قانزني</p>
+          <p class="text-sm-h4 text-h5 ms-2">ما الذي يميز منصة القانوني</p>
         </div>
         <p style="max-width: 700px;text-align: justify; font-size: 18px;" class="mx-auto my-5 px-5 ">
           منصة غير تقليدية , تحتوي على الكثير من الخصائص المحفزة على البحث والدراسة من قبيل التنقيط والجوائز
