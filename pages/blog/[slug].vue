@@ -2,7 +2,7 @@
   <div v-if="blog" dir="rtl" style="min-height: 100vh ;" class="bg-blue-grey-lighten-5">
     <div class="progress-container" >
       <div class="progress-bar" id="myBar">
-        <p class="text-center"> {{ (bar > 1 ? bar+'%' : '') }}</p>
+        <p class="text-center"> {{ (bar > 6 ? bar+'%' : bar) }}</p>
       </div>
     </div>
     <div>
@@ -41,7 +41,7 @@
       <v-row class="mx-2">
         <v-col class="mt-sm-3 my-3 pa-0 mx-auto " md="8" sm="11" cols="11">
           <div class="ma-3" style="width: 97.5%">
-            <p class="text-start text-h3">{{ blog.title }}</p>
+            <p class="text-start text-md-h3 text-h5">{{ blog.title }}</p>
             <user-header :userId="blog.user.id" :userImage="blog.user.image" :userName="blog.user.name"
               :userJob="blog.user.job" :userPoints="blog.user.points" />
             <div style="border-bottom: 1px solid #333;border-top: 1px solid #333; text-align: center;">
@@ -102,7 +102,7 @@
           </div>
           <div class="bg-white mx-auto rounded-lg">
             <div class="py-3">
-              <p class="text-center text-h3">{{ blog.title }}</p>
+              <p class="text-center text-md-h4 text-h5">{{ blog.title }}</p>
               <div class="d-flex justify-center mt-3">
                 <img :src="blog.image" alt="صورة المقالة" style="min-width: 80%; max-width: 80%;">
               </div>
@@ -514,19 +514,15 @@ async function deleteComment() {
   }
 }
 
-const decriptionMeta = computed(() => {
-  if (process.client) return document.getElementById("blogContent")?.textContent;
-  return blog.value.title;
-});
-
 function tryGoToAddBlog() {
   if (authStore.isLogin) return (window.location.href = "/addBlog");
   dialog.value = true;
 }
 const bar = ref(0);
+
 if(process.client){
   window.onscroll = function () { myFunction() };
-
+}
 function myFunction() {
   var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -534,12 +530,11 @@ function myFunction() {
   document.getElementById("myBar").style.width = scrolled + "%";
   bar.value = Math.floor(scrolled) ;
 }
-}
 useHead({
   title: blog.value.title,
   meta: [
-    { name: "description", content: decriptionMeta.value },
-    { property: "og:description", content: decriptionMeta.value },
+    { name: "description", content: blog.value.subtitle },
+    { property: "og:description", content: blog.value.subtitle },
     { property: "og:image", content: blog.value.image },
     { name: "twitter:card", content: "summay_large_image" },
     { property: "og:locale", content: "ar_ar" },

@@ -74,7 +74,7 @@
     </div>
     <!-- الاقسام -->
     <div class="" style="background-color: #eefcfd;">
-      <v-container class=" px-16">
+      <v-container class=" px-4">
         <div class="mb-8">
           <v-img style="width:30px ; display: inline-block;" src="images/أقسام.png"></v-img>
           <span class="text-h4 ms-3">أقسام منصة قانوني</span>
@@ -351,7 +351,7 @@ if (data.value.status) {
 .section21 {
   cursor: pointer;
   border: 1px solid #333;
-  padding-top: 20px;
+  padding: 20px;
   border-radius: 10px;
 }
 
