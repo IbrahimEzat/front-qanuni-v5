@@ -8,6 +8,9 @@
           <v-icon icon="mdi-account-voice"></v-icon> التحكم في مناقشات
           الموقع</v-card-title>
         <v-container>
+          <v-btn @click="goToUrl('/admin/discussions/about')" class="my-5" color="blue-grey-darken-4">
+            أضف نبذة عن القسم
+          </v-btn>
           <v-row class="justify-start">
             <v-col md="6" cols="12">
               <v-text-field v-model="search" variant="outlined" clearable hide-details="auto"

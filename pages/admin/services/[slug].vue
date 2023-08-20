@@ -114,8 +114,6 @@ function uploudFile($event: any) {
     image.value = $event.target?.files[0];
     previewImage.value = URL.createObjectURL($event.target?.files[0]);
     imageLabel.value = image.value.name;
-    console.log(image.value);
-    console.log(imageLabel.value);
 }
 
 function deleteImage() {

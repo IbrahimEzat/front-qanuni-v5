@@ -1,26 +1,23 @@
 <template>
   <div class="">
-    <div class="d-flex justify-center">
+    <div >
       <div v-if="id != authStore.token.user_id">
-        <div v-if="!status">
+        <div v-if="!status" class="d-flex justify-center mb-5">
           <v-btn
+            class="rounded-xl"
             size="small"
-            style="color: white; background: #777"
+            style="color: white; background: orange ; width: 100px;height: 40px; font-size: 18px;"
             @click="following()"
             >متابعة</v-btn
           >
-          <!-- <v-img class="pointer" src="/images/متابعة.png" style="width: 40px; height: 30px"></v-img> -->
         </div>
         <div v-else>
-          <v-btn size="small" color="info" @click="unfollow()"
+          <v-btn size="small" class="rounded-xl" color="info" @click="unfollow()" style="width: 150px;height: 40px; font-size: 18px;"
             >إلغاء المتابعة</v-btn
           >
         </div>
       </div>
-      <p class="ms-3">
-        يتابعه :
-        <v-badge inline color="info" :content="followingCount"></v-badge>
-      </p>
+      
     </div>
   </div>
 </template>

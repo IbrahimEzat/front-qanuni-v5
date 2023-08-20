@@ -13,6 +13,8 @@ export const useAuthStore = defineStore('useAuthStore', {
             },
             user_image: '',
             user_type: '',
+            user_gender: '',
+            user_name: '',
             tokenCookieShortcut: 'tf'
         }
     },
@@ -29,7 +31,7 @@ export const useAuthStore = defineStore('useAuthStore', {
             const { setToastMessage } = useSettingsStore();
 
             if (this.token.returnedToken === '') {
-                const tokenFromCookie = useCookie<{ token: tokenType, user_type: string, user_image: string }>(this.tokenCookieShortcut);
+                const tokenFromCookie = useCookie<{ token: tokenType, user_type: string, user_image: string, user_gender: string, user_name: string }>(this.tokenCookieShortcut);
 
                 if (tokenFromCookie.value) {
                     const { data, error } = await useSendRequest<any>('/checkToken', { 'token': tokenFromCookie.value.token });
@@ -40,6 +42,8 @@ export const useAuthStore = defineStore('useAuthStore', {
                     this.token = tokenFromCookie.value.token;
                     this.user_type = tokenFromCookie.value.user_type;
                     this.user_image = tokenFromCookie.value.user_image;
+                    this.user_gender = tokenFromCookie.value.user_gender;
+                    this.user_name = tokenFromCookie.value.user_name;
                 }
             }
         },
@@ -54,6 +58,8 @@ export const useAuthStore = defineStore('useAuthStore', {
                 };
                 this.user_type = '';
                 this.user_image = '';
+                this.user_gender = '';
+                this.user_name = '';
                 if (tokenFromCookie.value) {
                     tokenFromCookie.value = null;
                 }

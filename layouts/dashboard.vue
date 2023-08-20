@@ -73,7 +73,16 @@
                   style="background-color: white"
                   link
                   prepend-icon="mdi-shape-plus"
-                  title="تصنيفات الموقع"
+                  title="التصنيفات"
+                  @click="goToUrl('/admin/topics')"
+                ></v-list-item>
+
+                <v-list-item
+                  class="mb-1"
+                  style="background-color: white"
+                  link
+                  prepend-icon="mdi-shape-plus"
+                  title="الكلمات المفتاحية"
                   @click="goToUrl('/admin/categories')"
                 ></v-list-item>
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row class="mt-5">
-      <v-col cols="6" md="4" @click="$router.push('/admin/categories')">
+      <v-col cols="6" md="4" @click="$router.push('/admin/topics')">
         <v-sheet
           class="py-2"
           color=""
@@ -20,6 +20,31 @@
 
             <div class="text-center">
               <p class="text-h5 font-weight-bold">التصنيفات</p>
+              <p class="text-h6">{{ statistics.topics }}</p>
+            </div>
+          </v-list-item>
+        </v-sheet>
+      </v-col>
+
+      <v-col cols="6" md="4" @click="$router.push('/admin/categories')">
+        <v-sheet
+          class="py-2"
+          color=""
+          elevation="8"
+          style="border-right: 6px solid #f3c7fa; border-radius: 15px 0 0 15px"
+        >
+          <v-list-item active-color="primary">
+            <template v-slot:prepend>
+              <v-img
+                style="width: 79px; height: 110px"
+                cover
+                src="/images/tags.png"
+              >
+              </v-img>
+            </template>
+
+            <div class="text-center">
+              <p class="text-h5 font-weight-bold">كلمات مفتاحية</p>
               <p class="text-h6">{{ statistics.categories }}</p>
             </div>
           </v-list-item>

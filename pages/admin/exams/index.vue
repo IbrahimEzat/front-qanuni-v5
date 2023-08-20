@@ -17,6 +17,9 @@
           <v-btn @click="isAddExamDialogShow = true" append-icon="mdi-plus" color="success">أَضف اختبار</v-btn>
         </v-card-title>
         <v-container>
+          <v-btn @click="goToUrl('/admin/exams/about')" class="my-5" color="blue-grey-darken-4">
+            أضف نبذة عن القسم
+          </v-btn>
           <v-text-field
             class="mb-5"
             v-model="search"
@@ -374,6 +377,10 @@ const confirmAddExam = async () => {
   }
   loadingAddExam.value = false;
 };
+
+function goToUrl(url: string) {
+  window.location.href = url;
+}
 </script>
       
   <style></style>

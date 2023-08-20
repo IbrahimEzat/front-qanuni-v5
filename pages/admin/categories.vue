@@ -1,23 +1,23 @@
 <template>
   <div>
-    <v-btn color="black my-5" @click="showCreateDialog" prepend-icon="mdi-plus">أضف تصنيف جديد</v-btn>
+    <v-btn color="black my-5" @click="showCreateDialog" prepend-icon="mdi-plus">أضف كلمة مفتاحية </v-btn>
     <v-card v-show="dialog || updateDialog" class="pa-5 mx-auto" elevation="5" color="" border rounded>
       <v-card-title>
-        <span v-if="updateDialog"> تعديل التصنيف </span>
-        <span v-else> أضف تصنيف جديد </span>
+        <span v-if="updateDialog"> تعديل الكلمة المفتاحية </span>
+        <span v-else> أضف كلمات مفتاحية </span>
       </v-card-title>
       <v-form @submit.prevent>
         <p class="text-error" v-if="errorMessages.name">
           {{ errorMessages.name[0] }}
         </p>
-        <v-text-field v-model="category" required label="اسم التصنيف" variant="outlined"></v-text-field>
+        <v-text-field v-model="category" required label="اسم الكلمة المفتاحية" variant="outlined"></v-text-field>
         <v-row>
           <v-col lg="6" cols="12">
             <v-label>لون الخط</v-label>
             <v-color-picker v-model="fontColorCategory" show-swatches hide-sliders></v-color-picker>
           </v-col>
           <v-col lg="6" cols="12">
-            <v-label>لون خلفية التصنيف</v-label>
+            <v-label>لون خلفية الكلمة المفتاحية</v-label>
             <v-color-picker v-model="backgroundCategory" show-swatches hide-sliders></v-color-picker>
           </v-col>
         </v-row>
@@ -25,9 +25,9 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn variant="flat" color="error" @click="() => {
-            dialog = false;
-            updateDialog = false;
-          }
+          dialog = false;
+          updateDialog = false;
+        }
           ">إغلاق</v-btn>
         <v-btn variant="flat" color="green" :loading="loadingCreate" @click="createCategory"><span
             v-if="catWantUpdateSlug">تحديث</span><span v-else>إنشاء</span></v-btn>
@@ -39,7 +39,7 @@
           <thead>
             <tr>
               <th class="text-">#</th>
-              <th class="text-">اسم التصنيف</th>
+              <th class="text-">اسم الكلمة المفتاحية</th>
               <th class="text-">الاجراءات</th>
             </tr>
           </thead>
@@ -66,9 +66,9 @@
         </v-card-text>
         <v-card-actions class="justify-end">
           <v-btn color="black" variant="outlined" @click="() => {
-              deleteDialog = false;
-              catWantDeleteSlug = '';
-            }
+            deleteDialog = false;
+            catWantDeleteSlug = '';
+          }
             ">إغلاق</v-btn>
           <v-btn variant="flat" color="primary" @click="confirmDelete" :loading="loadingDelete">تأكيد</v-btn>
         </v-card-actions>

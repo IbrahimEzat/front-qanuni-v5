@@ -8,7 +8,9 @@
           <v-icon icon="mdi-post-outline"></v-icon> التحكم في مسابقات
           الموقع</v-card-title>
         <v-container>
-
+          <v-btn @click="goToUrl('/admin/competition/about')" class="my-5" color="blue-grey-darken-4">
+            أضف نبذة عن القسم
+          </v-btn>
 
           <v-text-field class="mb-5" v-model="search" variant="outlined" clearable hide-details="auto"
             prepend-inner-icon="mdi-magnify" label="بحث"></v-text-field>
@@ -216,6 +218,10 @@ async function confirmDelete(){
     isDeleteDialogShow.value = false
     setToastMessage('تم حذف المسابقة بنجاح');
   }
+}
+
+function goToUrl(url) {
+  window.location.href = url;
 }
 </script>
   

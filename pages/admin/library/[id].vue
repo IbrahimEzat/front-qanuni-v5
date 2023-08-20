@@ -85,7 +85,7 @@
                         <p class="text-error" v-if="errorMessages.categories">
                             {{ errorMessages.categories[0] }}
                         </p>
-                        <v-lable class="text-h6">اختر التصنيف للمقالة</v-lable>
+                        <v-lable class="text-h6">اختر التصنيف للمكتبة</v-lable>
                         <v-select v-model="categorySelect" :items="categories" item-title="name" item-value="id"
                             label="Select" variant="outlined" multiple chips closable-chips persistent-hint>
                             <template v-slot:item="{ props }">

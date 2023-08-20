@@ -16,6 +16,9 @@
           الموقع</v-card-title
         >
         <v-container>
+          <v-btn @click="goToUrl('/admin/library/about')" class="my-5" color="blue-grey-darken-4">
+            أضف نبذة عن القسم
+          </v-btn>
           <v-text-field class="mb-5" v-model="search" variant="outlined" clearable hide-details="auto"
                 prepend-inner-icon="mdi-magnify" label="بحث" ></v-text-field>
           <v-row class="justify-start">
@@ -299,6 +302,10 @@ async function sendDeleteNotification(dataNotify: any) {
     dataNotify: dataNotify,
     reason_delete: reason_delete.value,
   });
+}
+
+function goToUrl(url: string) {
+  window.location.href = url;
 }
 </script>
     

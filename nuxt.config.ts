@@ -9,7 +9,7 @@ export default defineNuxtConfig({
         }],
         async (options, nuxt) => {
             nuxt.hooks.hook('vite:extendConfig', config => config.plugins.push(vuetify()))
-        }],
+        }, 'nuxt-swiper'],
     alias: {
         pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs',
     },

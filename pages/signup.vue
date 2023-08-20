@@ -388,11 +388,15 @@ async function signup() {
       token: tokenType;
       user_type: string;
       user_image: string;
+      user_name: string;
+      user_gender: string;
     }
     const dataReturned = data.value.data as typeDataReturend;
     authStore.token = dataReturned.token;
     authStore.user_type = dataReturned.user_type;
     authStore.user_image = dataReturned.user_image;
+    authStore.user_gender = dataReturned.user_gender;
+    authStore.user_name = dataReturned.user_name;
     const cookieToken = useCookie<typeDataReturend | null>(
       authStore.tokenCookieShortcut,
       {
@@ -407,6 +411,8 @@ async function signup() {
       token: authStore.token,
       user_type: authStore.user_type,
       user_image: dataReturned.user_image,
+      user_gender: authStore.user_gender,
+      user_name: authStore.user_name,
     };
     //toast
     setToastMessage("تم  إنشاء الحساب بنجاح");

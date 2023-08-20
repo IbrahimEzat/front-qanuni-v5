@@ -3,59 +3,38 @@
     <v-alert color="error" v-if="generalError">{{ generalError }}</v-alert>
 
     <div>
-      
-      <v-card
-        style="min-height: 100vh"
-        border
-        color=""
-        class="pt-10"
-        rounded
-        elevation="2"
-      >
+
+      <v-card style="min-height: 100vh" border color="" class="pt-10" rounded elevation="2">
         <v-card-title class="text-h6 font-weight-bold text-start">
           <v-icon icon="mdi-post-outline"></v-icon> التحكم في مقالات
-          الموقع</v-card-title
-        >
+          الموقع</v-card-title>
         <v-container>
-          
-          
-            <v-text-field class="mb-5" v-model="search" variant="outlined" clearable hide-details="auto"
-                prepend-inner-icon="mdi-magnify" label="بحث" ></v-text-field>
-        
+
+          <v-btn @click="goToUrl('/admin/blogs/about')" class="my-5" color="blue-grey-darken-4">
+            أضف نبذة عن القسم
+          </v-btn>
+          <v-text-field class="mb-5" v-model="search" variant="outlined" clearable hide-details="auto"
+            prepend-inner-icon="mdi-magnify" label="بحث"></v-text-field>
+
 
           <v-row class="justify-start">
             <v-col md="6" cols="12">
-              <v-select
-                class="text-center"
-                item-value="value"
-                item-title="state"
-                label="فلترة الترتيب"
-                v-model="orderFillter"
-                :items="[
+              <v-select class="text-center" item-value="value" item-title="state" label="فلترة الترتيب"
+                v-model="orderFillter" :items="[
                   { state: 'الأحدث', value: 'newest' },
                   { state: 'الأقدم', value: 'oldest' },
-                ]"
-                variant="outlined"
-              >
+                ]" variant="outlined">
                 <template v-slot:item="{ props }">
                   <v-list-item class="text-end" v-bind="props"> </v-list-item>
                 </template>
               </v-select>
             </v-col>
             <v-col md="6" cols="12">
-              <v-select
-                class="text-center"
-                clearable
-                item-value="value"
-                item-title="state"
-                label="فلترة الحالة"
-                v-model="statusFillter"
-                :items="[
+              <v-select class="text-center" clearable item-value="value" item-title="state" label="فلترة الحالة"
+                v-model="statusFillter" :items="[
                   { state: 'تم نشرها', value: 'active' },
                   { state: 'قيد الانتظار', value: 'pending' },
-                ]"
-                variant="outlined"
-              >
+                ]" variant="outlined">
                 <template v-slot:item="{ props }">
                   <v-list-item class="text-end" v-bind="props"> </v-list-item>
                 </template>
@@ -63,7 +42,7 @@
             </v-col>
           </v-row>
           <v-sheet border style="overflow-x: auto">
-            <v-table class="" hover >
+            <v-table class="" hover>
               <thead>
                 <tr>
                   <th class="text-">#</th>
@@ -76,32 +55,23 @@
                 <tr v-for="(item, index) in currentShown" :key="item">
                   <td>{{ index + 1 }}</td>
                   <td>{{ item.title }}</td>
-                  
+
                   <td>
                     {{ item.status === "active" ? "تم النشر" : "قيد الانتظار" }}
                   </td>
                   <td>
-                    <v-btn
-                      color="error"
-                      prepend-icon="mdi-delete"
-                      class="me-5"
-                      size="small"
-                      @click="showDeleteDialog(item.id)"
-                      >حذف</v-btn
-                    >
-                    <v-btn
-                      color="primary"
-                      size="small"
-                      prepend-icon="mdi-pencil"
-                      @click="goToUrl('/admin/blogs/' + item.slug)"
-                      >تعديل</v-btn
-                    >
+                    <v-btn color="error" prepend-icon="mdi-delete" class="me-5" size="small"
+                      @click="showDeleteDialog(item.id)">حذف</v-btn>
+                    <v-btn color="primary" size="small" prepend-icon="mdi-pencil"
+                      @click="goToUrl('/admin/blogs/' + item.slug)">تعديل</v-btn>
+                    <!-- <v-btn color="primary" size="small" prepend-icon="mdi-pencil"
+                      @click="$router.push('/admin/blogs/' + item.slug)">تعديل</v-btn> -->
                   </td>
                 </tr>
               </tbody>
             </v-table>
-          <v-alert class="ma-3" type="info" v-if="currentShown.length == 0">لا يوجد نتائج 
-             </v-alert>
+            <v-alert class="ma-3" type="info" v-if="currentShown.length == 0">لا يوجد نتائج
+            </v-alert>
 
           </v-sheet>
           <div class="text-center" v-if="lengthPaginate > 1">
@@ -109,15 +79,8 @@
               <v-row justify="center">
                 <v-col cols="8">
                   <v-container class="max-width">
-                    <v-pagination
-                      next-icon="mdi-arrow-left-bold-circle"
-                      prev-icon="mdi-arrow-right-bold-circle"
-                      rounded="circle"
-                      dir="rtl"
-                      v-model="page"
-                      class="my-4"
-                      :length="lengthPaginate"
-                    ></v-pagination>
+                    <v-pagination next-icon="mdi-arrow-left-bold-circle" prev-icon="mdi-arrow-right-bold-circle"
+                      rounded="circle" dir="rtl" v-model="page" class="my-4" :length="lengthPaginate"></v-pagination>
                   </v-container>
                 </v-col>
               </v-row>
@@ -133,30 +96,18 @@
         <v-card-text class="text-end">
           هل انت متاكد من حذف هذه المقالة
           <v-label class="text-error">سبب الحذف</v-label>
-          <v-textarea dir="rtl" class="mt-2" v-model="reason_delete"  variant="outlined" density="compact"></v-textarea>
+          <v-textarea dir="rtl" class="mt-2" v-model="reason_delete" variant="outlined" density="compact"></v-textarea>
         </v-card-text>
 
         <v-card-actions class="justify-end">
-          <v-btn
-            color="black"
-            variant="outlined"
-            @click="
-              () => {
-                isDeleteDialogShow = false;
-                blogWantDelete = -1;
-                reason_delete = null;
-              }
-            "
-            >إغلاق</v-btn
-          >
-          <v-btn
-          :disabled="!reason_delete"
-            variant="flat"
-            color="primary"
-            @click="confirmDelete"
-            :loading="loadingDelete"
-            >تأكيد</v-btn
-          >
+          <v-btn color="black" variant="outlined" @click="() => {
+              isDeleteDialogShow = false;
+              blogWantDelete = -1;
+              reason_delete = null;
+            }
+            ">إغلاق</v-btn>
+          <v-btn :disabled="!reason_delete" variant="flat" color="primary" @click="confirmDelete"
+            :loading="loadingDelete">تأكيد</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -184,7 +135,7 @@ const isUpdateDialogShown = ref(false);
 const blogsWantUpdateId = ref(-1);
 const search = ref();
 
-function goToUrl(url:string){
+function goToUrl(url: string) {
   window.location.href = url;
 }
 // watch(orderFillter, (newValue) => {
@@ -202,7 +153,7 @@ const confirmDelete = async () => {
     {
       blog_id: blogWantDelete.value,
       token: authStore.token,
-      reason_delete:reason_delete.value
+      reason_delete: reason_delete.value
     }
   );
   reason_delete.value = '';
@@ -222,9 +173,9 @@ const confirmDelete = async () => {
   loadingDelete.value = false;
 };
 
-async function sendDeleteNotification(dataNotify:any){
-  useSendRequest('/notificatoin/delete-blog',{
-    'dataNotify':dataNotify
+async function sendDeleteNotification(dataNotify: any) {
+  useSendRequest('/notificatoin/delete-blog', {
+    'dataNotify': dataNotify
   });
 }
 const generalError = ref();
@@ -259,7 +210,7 @@ const filteredArray = computed(() => {
 });
 
 
-const filteredBlog= computed(() => {
+const filteredBlog = computed(() => {
   if (orderFillter.value === "newest") {
     return filteredArray.value.sort(function (a: any, b: any): number {
       if (a.created_at < b.created_at) return 1;
@@ -271,16 +222,16 @@ const filteredBlog= computed(() => {
       if (a.created_at > b.created_at) return 1;
       return -1;
     });
-  } 
+  }
   return blogs.value;
 });
 const lengthPaginate = computed(() => {
   return Math.ceil(searchShown.value.length / itemPerPage.value);
 });
 
-const searchShown = computed(()=> {
-  if(search.value){
-    return filteredBlog.value.filter((item :any)=>{
+const searchShown = computed(() => {
+  if (search.value) {
+    return filteredBlog.value.filter((item: any) => {
       page.value = 1;
       return item.title.toLowerCase().search(search.value.toLowerCase()) > -1;
     });
@@ -295,5 +246,4 @@ const currentShown = computed(() => {
 });
 </script>
   
-  <style>
-</style>
+<style></style>

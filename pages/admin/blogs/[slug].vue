@@ -11,12 +11,8 @@
           <p class="text-error" v-if="errorMessages.title">
             {{ errorMessages.title[0] }}
           </p>
-          <input
-            v-model="title"
-            class="px-3 py-1 mb-5"
-            style="width: 100%; border: 1px solid #000; border-radius: 10px"
-            type="text"
-          />
+          <input v-model="title" class="px-3 py-1 mb-5" style="width: 100%; border: 1px solid #000; border-radius: 10px"
+            type="text" />
         </div>
         <div>
           <p class="text-h6">المقال</p>
@@ -37,43 +33,51 @@
           <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
         </div>
         <div>
-          <v-lable class="text-h6">اختر التصنيف للمقالة</v-lable>
-          <v-select
-            v-model="categorySelect"
-            :items="categories"
-            item-title="name"
-            item-value="id"
-            label="Select"
-            variant="outlined"
-            multiple
-            chips
-            closable-chips
-            persistent-hint
-          >
+          <v-lable class="text-h6">اختر التصنيفات للمقالة</v-lable>
+          <v-select v-model="topicSelect" :items="topics" item-title="name" item-value="id" label="Select"
+            variant="outlined" multiple chips closable-chips persistent-hint>
             <template v-slot:item="{ props }">
               <v-list-item v-bind="props" class="text-end"></v-list-item>
             </template>
           </v-select>
         </div>
 
+        <div>
+          <v-lable class="text-h6">اختر الكلمات المفتاحية للمقالة</v-lable>
+          <v-select v-model="categorySelect" :items="categories" item-title="name" item-value="id" label="Select"
+            variant="outlined" multiple chips closable-chips persistent-hint>
+            <template v-slot:item="{ props }">
+              <v-list-item v-bind="props" class="text-end"></v-list-item>
+            </template>
+          </v-select>
+        </div>
+        <div>
+          <v-lable class="text-h6">أدخل نبذة عن المقالة</v-lable>
+          <v-textarea variant="outlined" auto-grow v-model="subtitle"></v-textarea>
+          <p class="text-error" v-if="errorMessages.subtitle">
+            {{ errorMessages.subtitle[0] }}
+          </p>
+        </div>
+        <div>
+          <v-file-input prepend-icon="" variant="outlined" @change="uploudFile($event)"
+            label="الصورة المصغرة"></v-file-input>
+          <p class="text-error" v-if="errorMessages.image">
+            {{ errorMessages.image[0] }}
+          </p>
+        </div>
+        <div class="my-4" v-if="blogInfo.image">
+          <label class="me-3"> الصورة الحالية: </label>
+          <v-img :src="blogInfo.image" style="max-width: 200px; max-height: 200px;"></v-img>
+        </div>
+
         <div style="text-align: end">
-          <v-btn
-            :loading="changeButtonLoading"
-            variant="outlined"
-            class="rounded-pill mt-3"
-            @click="updateBlog"
-            style="color: white; background-color: rgb(28, 173, 76)"
-          >
+          <v-btn :loading="changeButtonLoading" variant="outlined" class="rounded-pill mt-3" @click="updateBlog"
+            style="color: white; background-color: rgb(28, 173, 76)">
             <p class="text-h6">تعديل المقالة</p>
           </v-btn>
 
-          <v-btn
-            variant="outlined"
-            class="rounded-pill mt-3"
-            :disabled="blogStatus === 'active'"
-            @click="acceptBlog"
-            style="color: white; background-color: rgb(28, 173, 76)"
-          >
+          <v-btn variant="outlined" class="rounded-pill mt-3" :disabled="blogStatus === 'active'" @click="acceptBlog"
+            style="color: white; background-color: rgb(28, 173, 76)">
             <p class="text-h6">اعتماد المقالة</p>
           </v-btn>
         </div>
@@ -82,14 +86,14 @@
   </div>
 </template>
     
-  <script setup lang="ts">
+<script setup lang="ts">
 import { useAuthStore } from "~/stores/useAuthStore";
 import { useSettingsStore } from "~/stores/useSettings";
 import { responseReturn } from "~/types/tpes";
 
 useHead({
   link: [
-    
+
     {
       rel: "stylesheet",
       type: "text/css",
@@ -102,7 +106,7 @@ useHead({
     },
   ],
   script: [
-    
+
     {
       src: "https://code.jquery.com/jquery-3.5.1.min.js",
     },
@@ -123,7 +127,9 @@ const { setToastMessage } = useSettingsStore();
 const authStore = useAuthStore();
 const route = useRoute();
 const categorySelect = ref();
+const topicSelect = ref();
 const categories = ref();
+const topics = ref();
 
 const wordCount = ref(0);
 
@@ -131,9 +137,13 @@ const changeButtonLoading = ref(false);
 const addBlogLoading = ref(false);
 const blogInfo = ref();
 const title = ref("");
+const subtitle = ref();
+const image = ref<File | string>('');
 const errorMessages = reactive({
   title: [] as string[],
+  subtitle: [] as string[],
   content: [] as string[],
+  image: [] as string[],
 });
 const toolbarOptions = [
   [{ font: [] }, { size: [] }],
@@ -146,6 +156,17 @@ const toolbarOptions = [
   ["link", "image", "video", "formula"],
   ["clean"],
 ];
+
+function uploudFile($event: any) {
+  image.value = $event.target?.files[0];
+}
+
+function clearError() {
+  errorMessages.title = [];
+  errorMessages.subtitle = [];
+  errorMessages.content = [];
+  errorMessages.image = [];
+}
 
 async function acceptBlog() {
   const { data, error } = await useSendRequest<responseReturn>(
@@ -180,6 +201,7 @@ if (error.value) {
 } else if (data.value?.status) {
   blogInfo.value = data.value.data;
   title.value = blogInfo.value.title;
+  subtitle.value = blogInfo.value.subtitle ?? '';
   blogStatus.value = blogInfo.value.status;
 } else {
   setToastMessage(data.value?.message as string);
@@ -195,6 +217,15 @@ if (error2.value) {
 } else if (data2.value?.status) {
   categories.value = data2.value.data;
 }
+const { data: data3, error: error3 } = await useSendRequest<responseReturn>(
+  "/topics",
+  {}
+);
+if (error3.value) {
+  setToastMessage(error3.value.message);
+} else if (data3.value?.status) {
+  topics.value = data3.value.data;
+}
 
 const { data: selected, error: errorSelected } =
   await useSendRequest<responseReturn>("/admin/blogs/blogCategories", {
@@ -206,22 +237,37 @@ if (errorSelected.value) {
 } else if (selected.value?.status) {
   categorySelect.value = selected.value.data;
 }
+const { data: selected1, error: errorSelected1 } =
+  await useSendRequest<responseReturn>("/admin/blogs/topicblogs", {
+    blog_id: blogInfo.value.id,
+    token: authStore.token,
+  });
+if (errorSelected1.value) {
+  setToastMessage(errorSelected1.value.message);
+} else if (selected1.value?.status) {
+  topicSelect.value = selected1.value.data;
+}
 
 async function updateBlog() {
+  clearError()
   changeButtonLoading.value = true;
   let content = document.getElementsByClassName("note-editable")[0].innerHTML;
   // document.getElementById("editor")
   //   ?.firstChild as HTMLInputElement;
 
+  const formdata = new FormData();
+  formdata.append('token', JSON.stringify(authStore.token));
+  formdata.append('blog_id', blogInfo.value.id);
+  formdata.append('category_ids', JSON.stringify(categorySelect.value));
+  formdata.append('topic_ids', JSON.stringify(topicSelect.value));
+  formdata.append('title', title.value);
+  formdata.append('subtitle', subtitle.value);
+  formdata.append('content', content);
+  formdata.append('image', image.value as any);
+
   const { data, error } = await useSendRequest<responseReturn>(
     "/admin/blogs/update",
-    {
-      blog_id: blogInfo.value.id,
-      category_ids: categorySelect.value,
-      title: title.value,
-      content: content,
-      token: authStore.token,
-    }
+    formdata
   );
   changeButtonLoading.value = false;
   if (error.value) {
@@ -229,9 +275,6 @@ async function updateBlog() {
   } else if (data.value?.status) {
     setToastMessage("تم التعديل بنجاح");
   } else {
-    console.log("flase");
-
-    setToastMessage(data.value?.message);
     const errors = data.value?.errors || [];
     for (let i = 0; i < errors.length; i++) {
       const obj = errors[i] as { filed_name: string; message: string[] };
@@ -239,6 +282,10 @@ async function updateBlog() {
         errorMessages.title = obj.message;
       } else if (obj.filed_name === "content") {
         errorMessages.content = obj.message;
+      } else if (obj.filed_name === 'image') {
+        errorMessages.image = obj.message;
+      } else if (obj.filed_name === 'subtitle') {
+        errorMessages.subtitle = obj.message;
       }
     }
   }
@@ -322,9 +369,11 @@ onMounted(() => {
   max-width: 100%;
   max-height: 500px;
 }
+
 .modal-backdrop {
   position: relative !important;
 }
+
 .note-editor.note-frame .note-editing-area .note-editable {
   direction: rtl !important;
 }

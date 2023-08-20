@@ -11,8 +11,11 @@
                 <v-container>
 
                     <v-row class="justify-start">
-                        <v-btn color="grey-darken-4 ma-10" prepend-icon="mdi-plus"
+                        <v-btn color="grey-darken-4" class="mx-4" prepend-icon="mdi-plus"
                             @click="$router.push('/admin/services/add')">أضف خدمة جديدة</v-btn>
+                        <v-btn @click="goToUrl('/admin/services/about')" color="grey-darken-4" class="mx-2">
+                            أضف نبذة عن القسم
+                        </v-btn>
                     </v-row>
                     <v-row class="justify-start">
                         <v-col md="6" cols="12">
@@ -159,14 +162,14 @@ const filteredServices = computed(() => {
     return services.value;
 });
 
-const searchShown = computed(()=> {
-  if(search.value){
-    return filteredServices.value.filter((item :any)=>{
-      page.value = 1;
-      return item.title.toLowerCase().search(search.value.toLowerCase()) > -1;
-    });
-  }
-  return filteredServices.value
+const searchShown = computed(() => {
+    if (search.value) {
+        return filteredServices.value.filter((item: any) => {
+            page.value = 1;
+            return item.title.toLowerCase().search(search.value.toLowerCase()) > -1;
+        });
+    }
+    return filteredServices.value
 });
 
 
@@ -220,6 +223,10 @@ const confirmDelete = async () => {
     }
     loadingDelete.value = false;
 };
+
+function goToUrl(url: string) {
+    window.location.href = url;
+}
 </script>
     
 <style></style>

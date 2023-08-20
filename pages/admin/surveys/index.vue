@@ -8,6 +8,9 @@
           <v-icon icon="mdi-vote"></v-icon> التحكم في استطلاعات
           الموقع</v-card-title>
         <v-container>
+          <v-btn @click="goToUrl('/admin/surveys/about')" class="my-5" color="blue-grey-darken-4">
+            أضف نبذة عن القسم
+          </v-btn>
           <v-text-field class="mb-5" v-model="search" variant="outlined" clearable hide-details="auto"
             prepend-inner-icon="mdi-magnify" label="بحث"></v-text-field>
           <v-row class="justify-start">
@@ -180,6 +183,10 @@ if (error.value) {
   surveys.value = data.value.data;
 } else {
   setToastMessage(data.value?.message as string);
+}
+
+function goToUrl(url: string) {
+  window.location.href = url;
 }
 
 const filteredArray = computed(() => {

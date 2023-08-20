@@ -149,14 +149,20 @@ const login = async () => {
       token: tokenType;
       user_type: string;
       user_image: string;
+      user_name: string;
+      user_gender: string;
     };
     authStore.token = dataReturned.token;
     authStore.user_type = dataReturned.user_type;
     authStore.user_image = dataReturned.user_image;
+    authStore.user_gender = dataReturned.user_gender;
+    authStore.user_name = dataReturned.user_name;
     const cookieToken = useCookie<{
       token: tokenType;
       user_type: string;
       user_image: string;
+      user_name: string;
+      user_gender: string;
     } | null>(authStore.tokenCookieShortcut, {
       default() {
         return null;
@@ -168,6 +174,8 @@ const login = async () => {
       token: authStore.token,
       user_type: authStore.user_type,
       user_image: authStore.user_image,
+      user_gender: authStore.user_gender,
+      user_name: authStore.user_name,
     };
     //toast
     setToastMessage("تم تسجيل الدخول بنجاح");

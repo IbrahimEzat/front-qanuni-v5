@@ -275,7 +275,7 @@ onMounted(() => {
 
 <style>
 * {
-  font-family: "Almarai", sans-serif;
+  font-family: 'Noto Naskh Arabic', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .pointer {
