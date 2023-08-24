@@ -1,8 +1,8 @@
 <template>
   <div v-if="blog" dir="rtl" style="min-height: 100vh ;" class="bg-blue-grey-lighten-5">
-    <div class="progress-container" >
+    <div class="progress-container">
       <div class="progress-bar" id="myBar">
-        <p class="text-center"> {{ (bar > 6 ? bar+'%' : bar) }}</p>
+        <p class="text-center"> {{ (bar > 6 ? bar + '%' : bar) }}</p>
       </div>
     </div>
     <div>
@@ -43,7 +43,7 @@
           <div class="ma-3" style="width: 97.5%">
             <p class="text-start text-md-h3 text-h5">{{ blog.title }}</p>
             <user-header :userId="blog.user.id" :userImage="blog.user.image" :userName="blog.user.name"
-              :userJob="blog.user.job" :userPoints="blog.user.points" />
+              :userJob="blog.user.job" :userPoints="blog.user.points" :badgesCount="true" />
             <div style="border-bottom: 1px solid #333;border-top: 1px solid #333; text-align: center;">
               <p class="text-md-h4 text-h5 align-self-center mx-auto py-2 px-md-8 px-3">
                 {{ blog.title }}
@@ -520,16 +520,24 @@ function tryGoToAddBlog() {
 }
 const bar = ref(0);
 
-if(process.client){
-  window.onscroll = function () { myFunction() };
-}
 function myFunction() {
   var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   var scrolled = (winScroll / height) * 100;
   document.getElementById("myBar").style.width = scrolled + "%";
-  bar.value = Math.floor(scrolled) ;
+  bar.value = Math.floor(scrolled);
 }
+
+onMounted(() => {
+  if (process.client) {
+    window.onscroll = function () { myFunction() };
+  }
+})
+
+onUnmounted(() => {
+  window.onscroll = function () { return };
+})
+
 useHead({
   title: blog.value.title,
   meta: [
@@ -548,7 +556,7 @@ useHead({
 <style>
 .progress-container {
   width: 100%;
- z-index: 100;
+  z-index: 100;
   background: #ccc;
   position: fixed;
 }

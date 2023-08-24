@@ -19,7 +19,7 @@
         <div class="ma-3" style="width: 97.5%">
           <user-header :userId="surveyInfo.user.id" :userImage="surveyInfo.user.image" 
           :userName="surveyInfo.user.name" :userPoints="surveyInfo.user.points"
-          :userJob="surveyInfo.user.job"/>
+          :userJob="surveyInfo.user.job" :badgesCount="true"/>
           
          
           <div class="d-flex justify-space-between px-sm-7 px-2 py-3">

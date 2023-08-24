@@ -36,6 +36,7 @@
             :userImage="discussion.user.image"
             :userJob="discussion.user.job"
             :userPoints="discussion.user.points"
+            :badgesCount="true"
           />
 
           <div class="d-flex justify-space-between px-sm-7 px-2 py-3">

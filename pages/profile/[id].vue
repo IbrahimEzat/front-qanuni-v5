@@ -66,7 +66,7 @@
               <div class="my-2">
                 <p class="font-weight-bold">الاوسمة التي حصل عليها:</p>
                 <div class="border pa-2">
-                  <user-bades :userId="$route.params.id" />
+                  <user-bades :userId="$route.params.id" :badgesCount="false"/>
                 </div>
               </div>
               <div class="rounded-xl mb-3" style="background-color: #e1fbde">

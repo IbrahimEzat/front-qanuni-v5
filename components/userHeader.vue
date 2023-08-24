@@ -14,7 +14,7 @@
         </p>
         <p class=" d-flex justify-center text-md-h5 text-h6 mt-3">
                 <span>عدد الأوسمة التي حصل عليها :</span>
-                <user-bades class="" :userId="userId" />
+                <user-bades class="" :userId="userId" :badgesCount="true"/>
         </p>
           <follow :id="userId" class="mt-3"/>
         
@@ -89,7 +89,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps(["userId", "userName", "userImage", "userJob", "userPoints"]);
+defineProps(["userId", "userName", "userImage", "userJob", "userPoints", "badgesCount"]);
 </script>
 
 <style></style>

@@ -7,8 +7,8 @@
           <div style="width: 80%;" class="d-md-none d-block mx-auto">
           <v-img style="height: 250px;" src="images/Layer-0.png"></v-img>
         </div>
-          <h1 class="mb-2 text-md-start text-center">مرحبا بك في قانوني</h1>
-          <p class="text-h6 my-3 ">أكبر منصة مغربية مخصصة للباحثين في علم القانون من موظفين ومهنين و طلبة</p>
+          <h1 class="mb-2 text-md-start text-center">مرحبا بك في القانوني</h1>
+          <p class="text-h6 my-3 ">أكبر منصة مغربية مخصصة للباحثين في علم القانون من موظفين ومهنيين و طلبة</p>
         </div>
         <div style="width: 80%;" class="d-md-block d-none">
           <v-img style="height: 400px;"  src="images/Layer-0.png"></v-img>
@@ -43,7 +43,7 @@
       </div>
       <Swiper class="py-10  w-100  text-center" :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination]"
         :slides-per-view="1" :space-between="20" :loop="true" :pagination="true" :autoplay="{
-          delay: 3000,
+          delay: 4000,
           disableOnInteraction: true,
         }">
         <SwiperSlide class="">
@@ -77,7 +77,7 @@
       <v-container class=" px-4">
         <div class="mb-8">
           <v-img style="width:30px ; display: inline-block;" src="images/أقسام.png"></v-img>
-          <span class="text-h4 ms-3">أقسام منصة قانوني</span>
+          <span class="text-h4 ms-3">أقسام منصة القانوني</span>
         </div>
         <v-row>
           <v-col class="mb-10 " cols="6" sm="6" md="3">
