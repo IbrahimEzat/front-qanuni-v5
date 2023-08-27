@@ -37,10 +37,10 @@
         </div>
       </div>
     </div>
-    <div class="mx-auto" style="max-width:92%;">
-      <v-row class="mx-2">
-        <v-col class="mt-sm-3 my-3 pa-0 mx-auto " md="8" sm="11" cols="11">
-          <div class="ma-3" style="width: 97.5%">
+    <div class="mx-auto blog-contant" style="">
+      <v-row class="mt-2">
+        <v-col class=" mt-sm-3 my-3 pa-0 mx-auto " md="8" sm="12" cols="12">
+          <div class="my-3 ps-3" style="width: 97.5%">
             <p class="text-start text-md-h3 text-h5">{{ blog.title }}</p>
             <user-header :userId="blog.user.id" :userImage="blog.user.image" :userName="blog.user.name"
               :userJob="blog.user.job" :userPoints="blog.user.points" :badgesCount="true" />
@@ -49,8 +49,8 @@
                 {{ blog.title }}
               </p>
             </div>
-            <div class="d-flex flex-md-row flex-column align-center justify-space-between"
-              style="border-bottom: 1px solid #333;">
+            <div  class="d-flex parent-info flex-md-row flex-column align-center justify-space-between"
+              >
               <div>
                 <p class="text-h6 text-center text-md-right">نشر ب <span class="text-blue">{{
                   new Date(blog.created_at).toLocaleDateString([
@@ -65,8 +65,8 @@
                   </span></p>
 
               </div>
-              <div class="d-flex mt-md-0 mt-10">
-                <v-divider class="border-opacity-100" vertical></v-divider>
+              <div class="info d-flex w-100 justify-space-between mt-md-0 mt-10">
+                <v-divider class="d-lg-block d-none border-opacity-100" vertical></v-divider>
 
                 <div class="d-flex flex-column align-center text-center px-2 pointer">
                   <p class="text-h6">شارك المقالة</p>
@@ -100,14 +100,14 @@
               </div>
             </div>
           </div>
-          <div class="bg-white mx-auto rounded-lg">
+          <div class="bg-white  mx-auto rounded-lg">
             <div class="py-3">
               <p class="text-center text-md-h4 text-h5">{{ blog.title }}</p>
               <div class="d-flex justify-center mt-3">
                 <img :src="blog.image" alt="صورة المقالة" style="min-width: 80%; max-width: 80%;">
               </div>
             </div>
-            <div class="ma-3 blog">
+            <div class=" blog">
               <div v-if="blog">
                 <div id="blogContent" class="pa-5 content" style="border-bottom: 2px solid black" v-html="blog.content">
                 </div>
@@ -535,11 +535,12 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  window.onscroll = function () { return };
+  // window.onscroll = function () { return };
+  window.removeEventListener('scroll',()=>{} , true)
 })
 
 useHead({
-  title: blog.value.title,
+  title: blog.value?.title,
   meta: [
     { name: "description", content: blog.value.subtitle },
     { property: "og:description", content: blog.value.subtitle },
@@ -575,5 +576,24 @@ useHead({
 .content img {
   max-width: 100%;
   max-height: 500px;
+}
+.parent-info{
+    border-bottom: 1px solid #333;
+  }
+  .blog-contant{
+    max-width:92%;
+  }
+@media (max-width: 960px) {
+  .info{
+    border:1px solid #333;
+  }
+  .parent-info{
+    border-bottom: 0;
+  }
+}
+@media (max-width: 600px) {
+  .blog-contant{
+    max-width:98%;
+  }
 }
 </style>

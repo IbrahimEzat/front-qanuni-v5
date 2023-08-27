@@ -274,8 +274,8 @@ onMounted(() => {
 </script>
 
 <style>
-* {
-  font-family: 'Noto Naskh Arabic', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+body,.text-h6 {
+  font-family: 'Noto Naskh Arabic', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
 }
 
 .pointer {

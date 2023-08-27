@@ -82,7 +82,7 @@
         </div>
       </div>
 
-      <div class="py-5">
+      <div class="py-5 px-2">
         <h2 class="text-center mb-5">الكلمات المفتاحية:</h2>
         <div class="d-flex flex-wrap justify-center align-center">
           <div v-for="category in categories" :key="category.id" v-show="category.blogs_count != 0">

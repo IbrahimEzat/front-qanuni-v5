@@ -364,7 +364,7 @@ onMounted(() => {
   }, 200);
 });
 </script>
-<style scoped>
+<style>
 .content img {
   max-width: 100%;
   max-height: 500px;
