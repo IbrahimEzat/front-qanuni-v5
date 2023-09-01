@@ -49,8 +49,7 @@
                 {{ blog.title }}
               </p>
             </div>
-            <div  class="d-flex parent-info flex-md-row flex-column align-center justify-space-between"
-              >
+            <div class="d-flex parent-info flex-md-row flex-column align-center justify-space-between">
               <div>
                 <p class="text-h6 text-center text-md-right">نشر ب <span class="text-blue">{{
                   new Date(blog.created_at).toLocaleDateString([
@@ -69,8 +68,17 @@
                 <v-divider class="d-lg-block d-none border-opacity-100" vertical></v-divider>
 
                 <div class="d-flex flex-column align-center text-center px-2 pointer">
-                  <p class="text-h6">شارك المقالة</p>
-                  <v-img style="width: 55px; height: 55px" src="/images/مشاركة-المقالة.png"></v-img>
+                  <div id="fb-root"></div>
+                  <div class="align-center text-center" 
+                      :data-href="'https://alqanoni.com/blog/' + route.params.slug"
+                      data-layout="" data-size="">
+                        <a target="_blank"
+                          :href="'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Falqanoni.com%2Fblog%2F' + route.params.slug + '&amp;src=sdkpreparse'"
+                          class="fb-xfbml-parse-ignore"
+                          style="text-decoration: none;">
+                      <p class="text-h6">شارك المقالة</p>
+                      <v-img style="width: 55px; height: 55px" src="/images/مشاركة-المقالة.png"></v-img>
+                    </a></div>
                 </div>
                 <v-divider class="border-opacity-100" vertical></v-divider>
                 <div class="d-flex flex-column align-center text-center px-2">
@@ -543,6 +551,7 @@ useHead({
   title: blog.value?.title,
   meta: [
     { name: "description", content: blog.value.subtitle },
+    { property: "og:title", content: blog.value.title },
     { property: "og:description", content: blog.value.subtitle },
     { property: "og:image", content: blog.value.image },
     { name: "twitter:card", content: "summay_large_image" },
@@ -551,6 +560,15 @@ useHead({
     { property: "og:type", content: "website" },
   ],
   link: [{ rel: "canonical", href: "https://alqanoni.com/" }],
+  script: [
+    {
+      async: 'true',
+      defer: 'true',
+      src: 'https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v17.0&appId=923388012065189&autoLogAppEvents=1',
+      crossorigin: "anonymous",
+      nonce: "yVmEaZFl"
+    },
+  ],
 });
 </script>
     
@@ -577,23 +595,28 @@ useHead({
   max-width: 100%;
   max-height: 500px;
 }
-.parent-info{
-    border-bottom: 1px solid #333;
-  }
-  .blog-contant{
-    max-width:92%;
-  }
+
+.parent-info {
+  border-bottom: 1px solid #333;
+}
+
+.blog-contant {
+  max-width: 92%;
+}
+
 @media (max-width: 960px) {
-  .info{
-    border:1px solid #333;
+  .info {
+    border: 1px solid #333;
   }
-  .parent-info{
+
+  .parent-info {
     border-bottom: 0;
   }
 }
+
 @media (max-width: 600px) {
-  .blog-contant{
-    max-width:98%;
+  .blog-contant {
+    max-width: 98%;
   }
 }
 </style>
