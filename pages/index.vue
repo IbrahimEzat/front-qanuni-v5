@@ -245,9 +245,9 @@
           <v-img style="max-width:45px ; display: inline-block;" src="images/قسم-المسابقات.png"></v-img>
           <span class="text-md-h4 text-h6 ms-3 justify-self-center ">من هو قسم المسابقات</span>
         </div>
-        <div class="w-75 mx-auto" v-html="sectionsInfo.competition[0].about_section">
+        <!-- <div class="w-75 mx-auto" v-html="sectionsInfo.competition[0].about_section">
           
-        </div>
+        </div> -->
       </v-container>
     </div>
     <!-- نبذة عن الاخبارات -->
