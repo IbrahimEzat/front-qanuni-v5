@@ -332,7 +332,7 @@ const { data, error } = await useSendRequest('/get-about-section-all', {
 if (error.value) {
     setToastMessage('حدث خطأ ما');
 }
-if (data.value) {
+if (data.value.status) {
     sectionsInfo.value = data.value.data
 }
 </script>
