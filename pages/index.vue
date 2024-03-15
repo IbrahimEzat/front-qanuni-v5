@@ -196,9 +196,9 @@
           <v-img style="max-width:45px ; display: inline-block;" src="images/قسم-المقالات.png"></v-img>
           <span class="text-md-h4 text-h6 ms-3 justify-self-center ">من هو قسم المقالات</span>
         </div>
-        <div class="w-75 mx-auto" v-html="sectionsInfo.blogs[0].about_section">
+        <!-- <div class="w-75 mx-auto" v-html="sectionsInfo.blogs[0].about_section">
         
-        </div>
+        </div> -->
       </v-container>
     </div>
     <!-- نبذة عن المناقشات -->
