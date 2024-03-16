@@ -208,9 +208,9 @@
           <v-img style="max-width:45px ; display: inline-block;" src="images/قسم-المناقشات.png"></v-img>
           <span class="text-md-h4 text-h6 ms-3 justify-self-center ">من هو قسم المناقشات</span>
         </div>
-        <!-- <div class="w-75 mx-auto" v-html="sectionsInfo.discussions[0].about_section">
+        <div class="w-75 mx-auto" v-html="sectionsInfo.discussions[0].about_section">
           
-        </div> -->
+        </div>
       </v-container>
     </div>
     <!-- نبذة عن المكتبة -->
@@ -220,9 +220,9 @@
           <v-img style="max-width:45px ; display: inline-block;" src="images/قسم-المكتبة.png"></v-img>
           <span class="text-md-h4 text-h6 ms-3 justify-self-center ">من هو قسم المكتبة</span>
         </div>
-        <!-- <div class="w-75 mx-auto" v-html="sectionsInfo.library[0].about_section">
+        <div class="w-75 mx-auto" v-html="sectionsInfo.library[0].about_section">
           
-        </div> -->
+        </div>
       </v-container>
 
     </div>
@@ -233,9 +233,9 @@
           <v-img style="max-width:45px ; display: inline-block;" src="images/قسم-الاستطلاعات.png"></v-img>
           <span class="text-md-h4 text-h6 ms-3 justify-self-center ">من هو قسم الاستطلاعات</span>
         </div>
-        <!-- <div class="w-75 mx-auto" v-html="sectionsInfo.surveys[0].about_section">
+        <div class="w-75 mx-auto" v-html="sectionsInfo.surveys[0].about_section">
           
-        </div> -->
+        </div>
       </v-container>
     </div>
     <!-- نبذة عن المسابقات -->
@@ -245,9 +245,9 @@
           <v-img style="max-width:45px ; display: inline-block;" src="images/قسم-المسابقات.png"></v-img>
           <span class="text-md-h4 text-h6 ms-3 justify-self-center ">من هو قسم المسابقات</span>
         </div>
-        <!-- <div class="w-75 mx-auto" v-html="sectionsInfo.competition[0].about_section">
+        <div class="w-75 mx-auto" v-html="sectionsInfo.competition[0].about_section">
           
-        </div> -->
+        </div>
       </v-container>
     </div>
     <!-- نبذة عن الاخبارات -->
@@ -257,9 +257,9 @@
           <v-img style="max-width:45px ; display: inline-block;" src="images/قسم-الإختبارات.png"></v-img>
           <span class="text-md-h4 text-h6 ms-3 justify-self-center ">من هو قسم الإختبارات</span>
         </div>
-        <!-- <div class="w-75 mx-auto" v-html="sectionsInfo.exams[0].about_section">
+        <div class="w-75 mx-auto" v-html="sectionsInfo.exams[0].about_section">
           
-        </div> -->
+        </div>
       </v-container>
     </div>
     <!-- نبذة عن الاستشارات -->
@@ -282,9 +282,9 @@
           <v-img style="max-width:45px ; display: inline-block;" src="images/قسم-الخدمات.png"></v-img>
           <span class="text-md-h4 text-h6 ms-3 justify-self-center ">من هو قسم الخدمات</span>
         </div>
-        <!-- <div class="w-75 mx-auto" v-html="sectionsInfo.services[0].about_section">
+        <div class="w-75 mx-auto" v-html="sectionsInfo.services[0].about_section">
           
-        </div> -->
+        </div>
       </v-container>
     </div>
 
